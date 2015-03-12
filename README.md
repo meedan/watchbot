@@ -54,3 +54,7 @@ removeIfApplies:
 ```
 
 The only condition needed to start is a HTTP 404 checker that applies to all hosts.
+
+Installation
+
+* Copy `config/mongoid.yml.example` to `config/mongoid.yml` and configure your database

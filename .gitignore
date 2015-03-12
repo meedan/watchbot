@@ -20,7 +20,7 @@ db/schema.rb
 /tmp/sockets
 
 # Ignore configuration files
-config/database.yml
+config/mongoid.yml
 config/watchbot.yml
 config/initializers/errbit.rb
 config/initializers/secret_token.rb
