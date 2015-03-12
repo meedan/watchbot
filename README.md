@@ -58,3 +58,4 @@ The only condition needed to start is a HTTP 404 checker that applies to all hos
 Installation
 
 * Copy `config/mongoid.yml.example` to `config/mongoid.yml` and configure your database
+* Copy `config/initializers/errbit.rb.example` to `config/initializers/errbit.rb` and configure Errbit

@@ -5,3 +5,4 @@ group :doc do
 end
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'airbrake'
