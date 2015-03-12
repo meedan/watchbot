@@ -3,4 +3,6 @@ class Link
   include Mongoid::Timestamps
   
   field :url, type: String
+
+  validates_presence_of :url
 end
