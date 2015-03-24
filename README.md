@@ -59,3 +59,5 @@ Installation
 
 * Copy `config/mongoid.yml.example` to `config/mongoid.yml` and configure your database
 * Copy `config/initializers/errbit.rb.example` to `config/initializers/errbit.rb` and configure Errbit
+* Copy `config/watchbot.yml.example` to `config/watchbot.yml` and configure your application
+* Create delayed job indexes by running: `script/rails runner 'Delayed::Backend::Mongoid::Job.create\_indexes'`

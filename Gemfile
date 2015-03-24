@@ -8,3 +8,5 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'airbrake'
 gem 'validate_url'
 gem 'mocha'
+gem 'delayed_job_mongoid'
+gem 'delayed_cron_job', git: 'https://github.com/meedan/delayed_cron_job', branch: 'master', ref: 'b0b21a'
