@@ -8,10 +8,18 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
-  test "should not create link without url" do
+  test "should not create link without URL" do
     assert_no_difference 'Link.count' do
       assert_raises Mongoid::Errors::Validations do
         create_link url: nil
+      end
+    end
+  end
+
+  test "should not create link with invalid URL" do
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link url: 'test'
       end
     end
   end

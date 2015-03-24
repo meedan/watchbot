@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require File.expand_path('../../lib/error_codes', __FILE__)
 
 %w(
     action_controller
