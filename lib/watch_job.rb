@@ -7,14 +7,6 @@ class WatchJob < Struct.new(:link)
     'watch_job'
   end
 
-  def args
-    []
-  end
-
-  def object
-    self
-  end
-
   def calculate_cron(job)
     '* * * * *'
   end
