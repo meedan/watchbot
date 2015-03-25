@@ -146,4 +146,10 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
+  test "should create link without status" do
+    assert_difference 'Link.count' do
+      create_link status: nil
+    end
+  end
+
 end

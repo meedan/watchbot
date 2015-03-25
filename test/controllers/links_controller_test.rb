@@ -2,6 +2,10 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '..', 'test_helper')
 
 class LinksControllerTest < ActionController::TestCase
 
+  def setup
+    Link.delete_all
+  end
+
   test "should create link" do
     post :create, url: 'http://test.com'
     assert_response :success

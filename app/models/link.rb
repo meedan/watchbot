@@ -12,7 +12,7 @@ class Link
   validates_presence_of :url
   validates_uniqueness_of :url
   validates_url :url, url: { no_local: true }
-  validates :status, numericality: { only_integer: true }
+  validates :status, numericality: { only_integer: true }, allow_nil: true
 
   after_create :start_watching
 
