@@ -1,6 +1,8 @@
 class LinksController < ApplicationController
   respond_to :json
 
+  before_filter :restrict_access
+
   def create
     begin
       render_parameters_missing and return if params[:url].blank?
@@ -23,6 +25,14 @@ class LinksController < ApplicationController
       end
     rescue
       render_error 'Could not delete link', 'UNKNOWN' 
+    end
+  end
+
+  private
+
+  def restrict_access
+    authenticate_or_request_with_http_token do |token, options|
+      ApiKey.where(access_token: token, expire_at: { :$gte => Time.now }).exists?
     end
   end
 end
