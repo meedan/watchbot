@@ -30,10 +30,27 @@ class Link
   def check
     WATCHBOT_CONFIG['conditions'].each do |condition|
       if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
-        applies = send(condition['condition'])
-        self.destroy! if applies && condition['removeIfApplies']
+        if send(condition['condition'])
+          notify(condition['condition'])
+          self.destroy! if condition['removeIfApplies']
+        end
       end
     end
+  end
+
+  def notification_signature(payload)
+    'sha1=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), WATCHBOT_CONFIG['webhook']['secret_token'], payload)
+  end
+
+  def notify(condition)
+    payload = { link: self.url, condition: condition, timestamp: Time.now.to_i }.to_json
+    uri = URI(WATCHBOT_CONFIG['webhook']['callback_url'])
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = uri.scheme == 'https'
+    request = Net::HTTP::Post.new(uri.path)
+    request.body = payload
+    request['X-Watchbot-Signature'] = notification_signature(payload)
+    http.request(request)
   end
 
   private

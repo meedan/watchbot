@@ -168,4 +168,27 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
+  test "should notify if condition is verified" do
+    Link.any_instance.expects(:notify).once
+    link = create_link url: 'http://meedan.org/404'
+    link.check
+  end
+
+  test "should not notify if condition is not verified" do
+    Link.any_instance.expects(:notify).never
+    link = create_link url: 'http://meedan.com/'
+    link.check
+  end
+
+  test "should generate a notification signature" do
+    link = create_link
+    assert_kind_of String, link.notification_signature('{}')
+  end
+
+  test "should notify client" do
+    link = create_link
+    response = link.notify({})
+    assert_kind_of Net::HTTPResponse, response
+  end
+
 end
