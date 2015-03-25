@@ -11,6 +11,8 @@ The client communicates with the watchbot via a REST interface:
 
 * Add/remove a link: `POST/DELETE /link/:link`
 
+Check the script at `scripts/test.sh` to see how these endpoints can be called.
+
 The watchbot is configured with the following options:
 
 ```
