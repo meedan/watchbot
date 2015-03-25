@@ -1,4 +1,7 @@
-== Watchbot
+## Watchbot
+
+[![Code Climate](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/gpa.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
+[![Test Coverage](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/coverage.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
 
 Subsystem that continuously monitors web links to verify that they are still valid/active. We call this component the watchbot. We are aiming for simplicity and only supporting the Bridge OOEW 0.5 use case, namely: verifying that media links are present or absent.
 
