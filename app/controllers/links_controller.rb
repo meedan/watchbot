@@ -15,8 +15,8 @@ class LinksController < ApplicationController
 
   def destroy
     begin
-      render_parameters_missing and return if params[:id].blank?
-      @link = Link.where(url: params[:id]).first
+      render_parameters_missing and return if params[:url].blank?
+      @link = Link.where(url: params[:url]).first
       if @link.nil?
         render_not_found
       else

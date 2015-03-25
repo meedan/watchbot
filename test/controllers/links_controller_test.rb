@@ -27,13 +27,13 @@ class LinksControllerTest < ActionController::TestCase
 
   test "should not destroy link if URL is not present" do
     authorize
-    delete :destroy, id: ''
+    delete :destroy, url: ''
     assert_response 400
   end
 
   test "should not destroy link if URL is not found" do
     authorize
-    delete :destroy, id: 'http://test.org'
+    delete :destroy, url: 'http://test.org'
     assert_response 404
   end
 
@@ -41,7 +41,7 @@ class LinksControllerTest < ActionController::TestCase
     authorize
     create_link url: 'http://test.net'
     assert_difference 'Link.count', -1 do
-      delete :destroy, id: 'http://test.net'
+      delete :destroy, url: 'http://test.net'
     end
     assert_response :success
   end
@@ -50,7 +50,7 @@ class LinksControllerTest < ActionController::TestCase
     authorize
     Link.any_instance.expects(:destroy!).raises(RuntimeError)
     create_link url: 'http://test.net'
-    delete :destroy, id: 'http://test.net'
+    delete :destroy, url: 'http://test.net'
     assert_response 400
   end
 
