@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/meedan/delayed_cron_job
-  revision: b0b21add43e2a43286d970608dc10140b6a2d9ec
-  ref: b0b21a
+  revision: 119a059ee859d56c9aa99e6634fba008ff77a0cf
+  ref: 119a05
   branch: master
   specs:
     delayed_cron_job (0.5.2)
