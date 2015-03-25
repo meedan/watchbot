@@ -7,7 +7,10 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
 
   def create_link(options = {})
-    Link.create!({ url: random_url }.merge(options))
+    link = Link.create!({ url: random_url }.merge(options))
+    link.created_at = options[:created_at] if options.has_key?(:created_at)
+    link.save!
+    link.reload
   end
 
   private
