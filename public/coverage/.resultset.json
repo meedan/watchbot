@@ -23,24 +23,38 @@
         1,
         null,
         1,
+        13,
+        13,
+        13,
+        39,
+        null,
+        13,
+        null,
         null,
         1,
-        11,
+        3,
+        null,
+        null,
+        1,
+        null,
+        1,
+        10,
+        10,
         null,
         null
       ],
       "/home/caiosba/Meedan/watchbot/lib/watch_job.rb": [
         1,
         1,
-        null,
-        null,
-        null,
-        1,
-        10,
+        3,
         null,
         null,
         1,
         10,
+        null,
+        null,
+        1,
+        13,
         null,
         null
       ],
@@ -113,6 +127,6 @@
         null
       ]
     },
-    "timestamp": 1427235128
+    "timestamp": 1427245864
   }
 }

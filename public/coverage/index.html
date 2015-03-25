@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-24T19:12:08-03:00">2015-03-24T19:12:08-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-24T22:11:04-03:00">2015-03-24T22:11:04-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.07
+         3.64
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>4</b> files in total.
-    <b>47</b> relevant lines. 
-    <span class="green"><b>47</b> lines covered</span> and
+    <b>57</b> relevant lines. 
+    <span class="green"><b>57</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -73,21 +73,21 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>35</td>
         <td>21</td>
-        <td>12</td>
-        <td>12</td>
+        <td>21</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>6.0</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#0b859dd52bdf5c795297ee20e97909026cc75e74" class="src_link" title="lib/watch_job.rb">lib/watch_job.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>13</td>
-        <td>6</td>
-        <td>6</td>
+        <td>7</td>
+        <td>7</td>
         <td>0</td>
-        <td>4.0</td>
+        <td>4.3</td>
       </tr>
       
     </tbody>
@@ -160,15 +160,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.8
+         6.0
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>1</b> files in total.
-    <b>12</b> relevant lines. 
-    <span class="green"><b>12</b> lines covered</span> and
+    <b>21</b> relevant lines. 
+    <span class="green"><b>21</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -188,11 +188,11 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>35</td>
         <td>21</td>
-        <td>12</td>
-        <td>12</td>
+        <td>21</td>
         <td>0</td>
-        <td>1.8</td>
+        <td>6.0</td>
       </tr>
       
     </tbody>
@@ -281,15 +281,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.0
+         4.3
        </span>
     </span> hits/line)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>1</b> files in total.
-    <b>6</b> relevant lines. 
-    <span class="green"><b>6</b> lines covered</span> and
+    <b>7</b> relevant lines. 
+    <span class="green"><b>7</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -310,10 +310,10 @@
         <td class="strong"><a href="#0b859dd52bdf5c795297ee20e97909026cc75e74" class="src_link" title="lib/watch_job.rb">lib/watch_job.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>13</td>
-        <td>6</td>
-        <td>6</td>
+        <td>7</td>
+        <td>7</td>
         <td>0</td>
-        <td>4.0</td>
+        <td>4.3</td>
       </tr>
       
     </tbody>
@@ -756,8 +756,8 @@
     <h3>app/models/link.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>21</b> relevant lines. 
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -816,7 +816,7 @@
         <li class="covered" data-hits="1" data-linenumber="9">
           <span class="hits">1</span>
           
-          <code class="ruby">  validates_presence_of :url, :delayed_job_id</code>
+          <code class="ruby">  validates_presence_of :url</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="10">
@@ -834,7 +834,7 @@
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
-          <code class="ruby">  before_validation :start_watching, on: :create</code>
+          <code class="ruby">  after_create :start_watching</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -858,34 +858,118 @@
         <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
-          <code class="ruby">  private</code>
+          <code class="ruby">  def calculate_cron</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="covered" data-hits="13" data-linenumber="17">
+          <span class="hits">13</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    cron = nil</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="18">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="13" data-linenumber="18">
+          <span class="hits">13</span>
           
-          <code class="ruby">  def start_watching</code>
+          <code class="ruby">    diff = (Time.now - self.created_at).to_i</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="19">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="13" data-linenumber="19">
+          <span class="hits">13</span>
           
-          <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new, cron: :calculate_cron)</code>
+          <code class="ruby">    WATCHBOT_CONFIG[&#39;schedule&#39;].each do |schedule|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="covered" data-hits="39" data-linenumber="20">
+          <span class="hits">39</span>
+          
+          <code class="ruby">      cron = schedule[&#39;interval&#39;] if cron.nil? &amp;&amp; (schedule[&#39;to&#39;].blank? || diff &lt; schedule[&#39;to&#39;])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="13" data-linenumber="22">
+          <span class="hits">13</span>
+          
+          <code class="ruby">    cron</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def check</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="26">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="29">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="30">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def start_watching</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="32">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="33">
+          <span class="hits">10</span>
+          
+          <code class="ruby">    self.save!</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="34">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
           
           
           <code class="ruby">end</code>
@@ -900,8 +984,8 @@
     <h3>lib/watch_job.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -921,10 +1005,10 @@
           <code class="ruby">  def perform</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="covered" data-hits="3" data-linenumber="3">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby">    </code>
+          <code class="ruby">    link.check</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="4">
@@ -969,10 +1053,10 @@
           <code class="ruby">  def calculate_cron(job)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="11">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="13" data-linenumber="11">
+          <span class="hits">13</span>
           
-          <code class="ruby">    &#39;* * * * *&#39;</code>
+          <code class="ruby">    link.calculate_cron</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
