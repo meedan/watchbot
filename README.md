@@ -7,6 +7,8 @@ Subsystem that continuously monitors web links to verify that they are still val
 
 The proposed architecture is a self-contained system that receives links from clients and monitors those links on behalf of those clients. The monitoring activity is scheduled by the watchbot according to a configured schedule. The act of monitoring consists of verifying certain conditions (such as checking for HTTP 404 on a link) and notifying the client via a web hook in case the condition is true. Some conditions are general to all links, while other only apply to certain links (e.g. based on their host).
 
+![Workflow](doc/workflow.png?raw=true "Workflow")
+
 The client communicates with the watchbot via a REST interface:
 
 * Add/remove a link: `POST/DELETE /link/:link`

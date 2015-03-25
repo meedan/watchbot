@@ -1,0 +1,3 @@
+WatchBot Endpoints - Wed Mar 25 23:16:14 UTC 2015
+     1	DELETE /links/:url
+     2	POST   /links
