@@ -83,6 +83,22 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal Time.parse('2015-01-11 00:00:00').utc, job.reload.run_at.utc
   end
 
+  test "should stop checker" do
+    stubs_config({ 'schedule' => [{ 'to' => 172800, 'interval' => '*/5 * * * *' }] })
+    Delayed::Job.delete_all
+    Time.stubs(:now).returns(Time.parse('2015-01-02 09:00:00'))
+    link = create_link created_at: Time.parse('2015-01-01 09:00:00')
+    job = link.delayed_job
+    assert_equal Time.parse('2015-01-02 09:05:00').utc, job.run_at.utc
+    Time.stubs(:now).returns(Time.parse('2015-01-10 10:00:00'))
+    assert_difference 'Delayed::Job.count', -1 do
+      Delayed::Worker.new.work_off
+    end
+    assert_raises Mongoid::Errors::DocumentNotFound do
+      job.reload
+    end
+  end
+
   test "should check that URL is offline if domain is invalid" do
     link = create_link url: 'http://thisisnotonline.com'
     assert link.check404
