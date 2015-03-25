@@ -64,3 +64,10 @@ Installation
 * Copy `config/initializers/errbit.rb.example` to `config/initializers/errbit.rb` and configure Errbit
 * Copy `config/watchbot.yml.example` to `config/watchbot.yml` and configure your application
 * Create delayed job indexes by running: `script/rails runner 'Delayed::Backend::Mongoid::Job.create\_indexes'`
+
+Administrative tasks
+
+There are some rake tasks to perform administrative actions. For example:
+
+* `rake watchbot:api\_keys:delete\_expired`: Remove expired keys from the database
+* `rake watchbot:api\_keys:create`: Create a new API key
