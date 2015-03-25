@@ -2,6 +2,10 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '..', 'test_helper')
 
 class LinkTest < ActiveSupport::TestCase
 
+  def setup
+    Link.delete_all
+  end
+
   test "should create link" do
     assert_difference 'Link.count' do
       create_link
@@ -77,6 +81,69 @@ class LinkTest < ActiveSupport::TestCase
     Time.stubs(:now).returns(Time.parse('2015-01-10 10:02:00'))
     Delayed::Worker.new.work_off
     assert_equal Time.parse('2015-01-11 00:00:00').utc, job.reload.run_at.utc
+  end
+
+  test "should check that URL is offline if domain is invalid" do
+    link = create_link url: 'http://thisisnotonline.com'
+    assert link.check404
+    assert_equal 404, link.reload.status
+  end
+
+  test "should check that URL is offline" do
+    link = create_link url: 'http://meedan.org/404'
+    assert link.check404
+    assert_equal 404, link.reload.status
+  end
+
+  test "should check that URL is online" do
+    link = create_link url: 'http://meedan.com'
+    assert !link.check404
+    assert_equal 301, link.reload.status
+  end
+
+  test "should have status" do
+    link = create_link
+    assert_kind_of Integer, link.status
+    link.status = 200
+    link.save!
+    assert_equal 200, link.reload.status
+  end
+
+  test "should only accept numbers for status" do
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link status: 'not number'
+      end
+    end
+  end
+
+  test "should not accept duplicated URLs" do
+    assert_difference 'Link.count' do
+      assert_nothing_raised do
+        create_link url: 'http://test.com/same'
+      end
+    end
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link url: 'http://test.com/same'
+      end
+    end
+  end
+  
+  test "should run checkers" do
+    link = create_link url: 'http://meedan.org/404', status: 200
+    assert_no_difference 'Link.count' do
+      link.check
+    end
+    assert_equal 404, link.reload.status
+  end
+
+  test "should run checkers and remove link if applicable" do
+    stubs_config({ 'conditions' => [{ 'linkRegex' => '.*', 'condition' => 'check404', 'removeIfApplies' => true }]})
+    link = create_link url: 'http://meedan.org/404', status: 200
+    assert_difference 'Link.count', -1 do
+      link.check
+    end
   end
 
 end

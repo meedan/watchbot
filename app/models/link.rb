@@ -1,13 +1,18 @@
 require 'watch_job'
+require 'link_checkers'
 
 class Link
   include Mongoid::Document
   include Mongoid::Timestamps
+  include LinkCheckers
   
   field :url, type: String
+  field :status, type: Integer
 
   validates_presence_of :url
+  validates_uniqueness_of :url
   validates_url :url, url: { no_local: true }
+  validates :status, numericality: { only_integer: true }
 
   after_create :start_watching
 
@@ -23,7 +28,12 @@ class Link
   end
 
   def check
-    true
+    WATCHBOT_CONFIG['conditions'].each do |condition|
+      if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
+        applies = send(condition['condition'])
+        self.destroy! if applies && condition['removeIfApplies']
+      end
+    end
   end
 
   private

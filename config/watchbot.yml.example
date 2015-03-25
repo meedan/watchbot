@@ -19,7 +19,7 @@ development: &default
     # If the last entry only contains :interval, the conditions will continue to be verified forever at that interval.
     { to: 172800, interval: '*/5 * * * *' }, # 2 days old - check every 5 minutes
     { to: 604800, interval: '0 * * * *' },   # 7 days old - check every hour
-    { interval: '0 0 * * *' }                # More than 7 days old - check once a day
+    { interval: '0 3 * * *' }                # More than 7 days old - check once a day
   ]
   conditions: [
     # Conditions to verify.
@@ -28,7 +28,7 @@ development: &default
     # If the condition applies and :removeIfApplies is true, then the link should be removed from the database.
     { 
       linkRegex: '.*',
-      condition: 404checker,
+      condition: check404,
       removeIfApplies: false
     }
   ]
