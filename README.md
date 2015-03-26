@@ -28,6 +28,23 @@ The client communicates with the WatchBot via a REST interface:
 
 Check the script at `scripts/test.sh` to see how these endpoints can be called.
 
+When a condition is verified, the client is notified through a webhook. An example simple client written in Sinatra can be found at `scripts/sinatra.rb`, which runs by default at `http://localhost:4567` and has a `/payload` API enpoint to receive the notifications from the WatchBot. It's necessary to setup a `secret_token` on both client and server in order to verify the communication.
+
+The example client webhook can be run by: `SECRET_TOKEN=mysecrettoken ruby scripts/sinatra.rb`
+
+When notified, it will print something like this on its log:
+
+```
+JSON received: {"link"=>"http://link.link", "condition"=>{}, "timestamp"=>1427390618}
+127.0.0.1 - - [26/Mar/2015 14:23:38] "POST /payload HTTP/1.1" 200 - 0.0075
+```
+
+In case of an invalid secret token, it will just return an error 500:
+
+```
+127.0.0.1 - - [26/Mar/2015 14:21:42] "POST /payload HTTP/1.1" 500 24 0.0061
+```
+
 ### Configuration
 
 The WatchBot is configured with the following options (at `config/watchbot.yml`):
@@ -44,7 +61,7 @@ webhook:
   # The HTTP header X-Watchbot-Signature is set to a hash signature of the post body. 
   # The :secret_token configuration is used to compute the signature.
   # Refer to https://developer.github.com/webhooks/securing/ [^] for implementation details
-  callback_url: http://localhost
+  callback_url: http://localhost:4567/payload
   secret_token: mysecrettoken
 schedule: [
   # Schedule of verifying conditions.
