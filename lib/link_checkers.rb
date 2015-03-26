@@ -10,7 +10,7 @@ module LinkCheckers
       code = 404
     end
     self.update_attributes(status: code) if code != self.status
-    code === 404
+    code / 100 === 4
   end
 
 end

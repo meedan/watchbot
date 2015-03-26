@@ -111,6 +111,13 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 404, link.reload.status
   end
 
+  test "should check that URL is offline if forbidden" do
+    Net::HTTPNotFound.any_instance.stubs(:code).returns(403)
+    link = create_link url: 'http://meedan.org/403'
+    assert link.check404
+    assert_equal 403, link.reload.status
+  end
+
   test "should check that URL is online" do
     link = create_link url: 'http://meedan.com'
     assert !link.check404
