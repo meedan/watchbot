@@ -29,7 +29,7 @@ development: &default
     { 
       linkRegex: '.*',
       condition: check404,
-      removeIfApplies: false
+      removeIfApplies: true
     }
   ]
 test:
