@@ -3,6 +3,7 @@ require File.join(File.expand_path(File.dirname(__FILE__)), '..', 'test_helper')
 class LinksControllerTest < ActionController::TestCase
 
   def setup
+    super
     Link.delete_all
     ApiKey.delete_all
   end

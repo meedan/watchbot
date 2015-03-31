@@ -3,8 +3,14 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'webmock/test_unit'
 
 class ActiveSupport::TestCase
+
+  def setup
+    WebMock.disable_net_connect! allow: ['codeclimate.com', /^http:\/\/test\./, /meedan/, 'thisisnotonline.com']
+    WebMock.stub_request(:post, 'http://localhost:4567/payload')
+  end
 
   def create_link(options = {})
     link = Link.create!({ url: random_url, status: 100 }.merge(options))
@@ -37,7 +43,7 @@ class ActiveSupport::TestCase
   end
 
   def random_url
-    'http://' + random_string + '.' + random_string(3)
+    'http://test.' + random_string + '.' + random_string(3)
   end
 
 end
