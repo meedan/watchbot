@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-03T20:39:21-03:00">2015-04-03T20:39:21-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-03T20:54:54-03:00">2015-04-03T20:54:54-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.45
+         6.37
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>6</b> files in total.
-    <b>111</b> relevant lines. 
-    <span class="green"><b>111</b> lines covered</span> and
+    <b>109</b> relevant lines. 
+    <span class="green"><b>109</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,9 +83,9 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>63</td>
-        <td>42</td>
-        <td>42</td>
+        <td>62</td>
+        <td>41</td>
+        <td>41</td>
         <td>0</td>
         <td>9.4</td>
       </tr>
@@ -93,11 +93,11 @@
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>19</td>
-        <td>13</td>
-        <td>13</td>
+        <td>18</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>10.9</td>
+        <td>10.7</td>
       </tr>
       
       <tr>
@@ -180,15 +180,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.72
+         7.69
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>2</b> files in total.
-    <b>57</b> relevant lines. 
-    <span class="green"><b>57</b> lines covered</span> and
+    <b>56</b> relevant lines. 
+    <span class="green"><b>56</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -218,9 +218,9 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>63</td>
-        <td>42</td>
-        <td>42</td>
+        <td>62</td>
+        <td>41</td>
+        <td>41</td>
         <td>0</td>
         <td>9.4</td>
       </tr>
@@ -311,15 +311,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         10.24
+         10.07
        </span>
     </span> hits/line)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>2</b> files in total.
-    <b>20</b> relevant lines. 
-    <span class="green"><b>20</b> lines covered</span> and
+    <b>19</b> relevant lines. 
+    <span class="green"><b>19</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -339,11 +339,11 @@
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>19</td>
-        <td>13</td>
-        <td>13</td>
+        <td>18</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>10.9</td>
+        <td>10.7</td>
       </tr>
       
       <tr>
@@ -1024,8 +1024,8 @@
     <h3>app/models/link.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>42</b> relevant lines. 
-      <span class="green"><b>42</b> lines covered</span> and
+      <b>41</b> relevant lines. 
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1330,82 +1330,76 @@
         <li class="covered" data-hits="8" data-linenumber="50">
           <span class="hits">8</span>
           
-          <code class="ruby">    http.verify_mode = OpenSSL::SSL::VERIFY_NONE</code>
+          <code class="ruby">    request = Net::HTTP::Post.new(uri.path)</code>
         </li>
       
         <li class="covered" data-hits="8" data-linenumber="51">
           <span class="hits">8</span>
           
-          <code class="ruby">    request = Net::HTTP::Post.new(uri.path)</code>
+          <code class="ruby">    request.body = payload</code>
         </li>
       
         <li class="covered" data-hits="8" data-linenumber="52">
           <span class="hits">8</span>
           
-          <code class="ruby">    request.body = payload</code>
+          <code class="ruby">    request[&#39;X-Watchbot-Signature&#39;] = notification_signature(payload)</code>
         </li>
       
         <li class="covered" data-hits="8" data-linenumber="53">
           <span class="hits">8</span>
           
-          <code class="ruby">    request[&#39;X-Watchbot-Signature&#39;] = notification_signature(payload)</code>
+          <code class="ruby">    http.request(request)</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="54">
-          <span class="hits">8</span>
+        <li class="never" data-hits="" data-linenumber="54">
           
-          <code class="ruby">    http.request(request)</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="56">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="57">
+        <li class="covered" data-hits="1" data-linenumber="56">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="58">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="59">
+        <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="60">
+        <li class="covered" data-hits="25" data-linenumber="59">
           <span class="hits">25</span>
           
           <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="61">
+        <li class="covered" data-hits="25" data-linenumber="60">
           <span class="hits">25</span>
           
           <code class="ruby">    self.save!</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">end</code>
@@ -1420,8 +1414,8 @@
     <h3>lib/link_checkers.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1480,64 +1474,58 @@
         <li class="covered" data-hits="14" data-linenumber="9">
           <span class="hits">14</span>
           
-          <code class="ruby">      http.verify_mode = OpenSSL::SSL::VERIFY_NONE</code>
-        </li>
-      
-        <li class="covered" data-hits="14" data-linenumber="10">
-          <span class="hits">14</span>
-          
           <code class="ruby">      result = http.get(uri.path)</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="11">
+        <li class="covered" data-hits="8" data-linenumber="10">
           <span class="hits">8</span>
           
           <code class="ruby">      code = result.code.to_i</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="never" data-hits="" data-linenumber="11">
           
           
           <code class="ruby">    rescue SocketError</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="13">
+        <li class="covered" data-hits="6" data-linenumber="12">
           <span class="hits">6</span>
           
           <code class="ruby">      code = 404</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="15">
+        <li class="covered" data-hits="14" data-linenumber="14">
           <span class="hits">14</span>
           
           <code class="ruby">    self.update_attributes(status: code) if code != self.status</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="16">
+        <li class="covered" data-hits="14" data-linenumber="15">
           <span class="hits">14</span>
           
           <code class="ruby">    code / 100 === 4</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="18">
           
           
           <code class="ruby">end</code>
