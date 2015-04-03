@@ -122,7 +122,13 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that URL is online" do
     link = create_link url: 'http://meedan.com'
     assert !link.check404
-    assert_equal 301, link.reload.status
+    assert_equal 200, link.reload.status
+  end
+
+  test "should check that HTTPS URL is online" do
+    link = create_link url: 'https://ca.ios.ba'
+    assert !link.check404
+    assert_equal 200, link.reload.status
   end
 
   test "should have status" do

@@ -4,7 +4,10 @@ module LinkCheckers
     uri = URI.parse(self.url).normalize
     code = 0
     begin
-      result = Net::HTTP.start(uri.host, uri.port) { |http| http.get(uri.path) }
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = uri.scheme == 'https'
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      result = http.get(uri.path)
       code = result.code.to_i
     rescue SocketError
       code = 404
