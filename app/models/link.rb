@@ -32,7 +32,7 @@ class Link
       if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
         if send(condition['condition'])
           notify(condition['condition'])
-          self.destroy! if condition['removeIfApplies']
+          self.destroy if condition['removeIfApplies']
         end
       end
     end

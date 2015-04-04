@@ -1,6 +1,6 @@
 class WatchJob < Struct.new(:link)
   def perform
-    link.check
+    link.check unless link.nil?
   end
 
   def queue_name
@@ -8,6 +8,6 @@ class WatchJob < Struct.new(:link)
   end
 
   def calculate_cron(job)
-    link.calculate_cron
+    link.calculate_cron unless link.nil?
   end
 end
