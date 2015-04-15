@@ -8,6 +8,7 @@ class Link
   
   field :url, type: String
   field :status, type: Integer
+  field :data, type: Hash, default: {}
 
   validates_presence_of :url
   validates_uniqueness_of :url

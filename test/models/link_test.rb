@@ -4,7 +4,7 @@ class LinkTest < ActiveSupport::TestCase
 
   def setup
     super
-    Link.delete_all
+    Link.destroy_all
   end
 
   test "should create link" do
@@ -218,7 +218,7 @@ class LinkTest < ActiveSupport::TestCase
     link.check
   end
 
-  test "should check that Google Spreadsheet was not updated" do
+  test "should check that Google Spreadsheet was not updated if someone is editing" do
     link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
     resp = nil
     t = Thread.new{ resp = link.check_google_spreadsheet_updated }
@@ -233,9 +233,30 @@ class LinkTest < ActiveSupport::TestCase
     w.save
   end
 
+  test "should check that Google Spreadsheet was not updated if nothing changed" do
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    resp = link.check_google_spreadsheet_updated
+    resp = link.check_google_spreadsheet_updated
+    assert !resp
+  end
+
   test "should check that Google Spreadsheet was updated" do
     link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
     resp = link.check_google_spreadsheet_updated
+    w = link.get_google_worksheet
+    w[5, 3] = 'Changed'
+    w.save
+    resp = link.check_google_spreadsheet_updated
     assert resp
+    w[5, 3] = 'Not Found'
+    w.save
+  end
+
+  test "should have data" do
+    link = create_link
+    assert_equal({}, link.data)
+    link.data[:foo] = 'bar'
+    link.save!
+    assert_equal({ 'foo' => 'bar' }, link.reload.data)
   end
 end

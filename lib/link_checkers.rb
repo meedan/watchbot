@@ -19,11 +19,18 @@ module LinkCheckers
     require 'digest/md5'
     w = self.get_google_worksheet
     before = Digest::MD5.hexdigest(w.rows.join)
+    return false if before === self.data['hash']
     sleep 30
     w.reload
     after = Digest::MD5.hexdigest(w.rows.join)
     # If something changed during that time it's because someone is still editing - so, we don't want to notify
-    before === after
+    if before === after
+      self.data['hash'] = after
+      self.save!
+      return true
+    else
+      return false
+    end
   end
 
   def get_google_worksheet
