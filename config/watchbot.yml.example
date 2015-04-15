@@ -27,11 +27,19 @@ development: &default
     # :condition(:link) -> :boolean is a function that returns true when the condition applies, false when it doesn't apply.
     # If the condition applies and :removeIfApplies is true, then the link should be removed from the database.
     { 
-      linkRegex: '.*',
+      linkRegex: '^https?:\/\/(www\.)?(twitter|instagram)\.com\/',
       condition: check404,
       removeIfApplies: true
+    },
+    { 
+      linkRegex: '^https?:\/\/docs\.google\.com\/',
+      condition: check_google_spreadsheet_updated,
+      removeIfApplies: false
     }
   ]
+  settings:
+    google_email:
+    google_password:
 test:
   <<: *default
 production:

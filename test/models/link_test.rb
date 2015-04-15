@@ -160,8 +160,9 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
   
-  test "should run checkers" do
-    link = create_link url: 'http://meedan.org/404', status: 200
+  test "should run checkers and not remove link if not applicable" do
+    stubs_config({ 'conditions' => [{ 'linkRegex' => '^https?:\/\/(www\.)?(twitter|instagram)\.com\/', 'condition' => 'check404', 'removeIfApplies' => false }]})
+    link = create_link url: 'https://twitter.com/caiosba/404', status: 200
     assert_no_difference 'Link.count' do
       link.check
     end
@@ -169,8 +170,8 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should run checkers and remove link if applicable" do
-    stubs_config({ 'conditions' => [{ 'linkRegex' => '.*', 'condition' => 'check404', 'removeIfApplies' => true }]})
-    link = create_link url: 'http://meedan.org/404', status: 200
+    stubs_config({ 'conditions' => [{ 'linkRegex' => '^https?:\/\/(www\.)?(twitter|instagram)\.com\/', 'condition' => 'check404', 'removeIfApplies' => true }]})
+    link = create_link url: 'https://twitter.com/caiosba/404', status: 200
     assert_difference 'Link.count', -1 do
       link.check
     end
@@ -184,13 +185,13 @@ class LinkTest < ActiveSupport::TestCase
 
   test "should notify if condition is verified" do
     Link.any_instance.expects(:notify).once
-    link = create_link url: 'http://meedan.org/404'
+    link = create_link url: 'https://twitter.com/caiosba/404'
     link.check
   end
 
   test "should not notify if condition is not verified" do
     Link.any_instance.expects(:notify).never
-    link = create_link url: 'http://meedan.com/'
+    link = create_link url: 'https://twitter.com/caiosba/status/539790133219053568'
     link.check
   end
 
@@ -205,4 +206,36 @@ class LinkTest < ActiveSupport::TestCase
     assert_kind_of Net::HTTPResponse, response
   end
 
+  test "should get job" do
+    link = create_link
+    assert_equal link.delayed_job, link.job
+  end
+
+  test "should run checker for Google Spreadsheet" do
+    Link.any_instance.expects(:check404).never
+    Link.any_instance.expects(:check_google_spreadsheet_updated).once
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    link.check
+  end
+
+  test "should check that Google Spreadsheet was not updated" do
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    resp = nil
+    t = Thread.new{ resp = link.check_google_spreadsheet_updated }
+    sleep 20
+    w = link.get_google_worksheet
+    w[5, 3] = 'Changed'
+    w.save
+    t.join
+    assert_not_nil resp
+    assert !resp
+    w[5, 3] = 'Not Found'
+    w.save
+  end
+
+  test "should check that Google Spreadsheet was updated" do
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    resp = link.check_google_spreadsheet_updated
+    assert resp
+  end
 end

@@ -53,6 +53,10 @@ class Link
     http.request(request)
   end
 
+  def job
+    self.delayed_job
+  end
+
   private
 
   def start_watching
