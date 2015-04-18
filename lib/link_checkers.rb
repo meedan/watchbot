@@ -38,7 +38,7 @@ module LinkCheckers
   def get_google_worksheet
     require 'google_drive'
     session = GoogleDrive::Session.login(WATCHBOT_CONFIG['settings']['google_email'], WATCHBOT_CONFIG['settings']['google_password'])
-    key = self.url.gsub(/https:\/\/docs\.google\.com\/a\/meedan\.net\/spreadsheets\/d\/([^\/]+)\/.*/, '\1')
+    key = self.url.gsub(/https:\/\/docs\.google\.com\/.*\/d\/([^\/]+)\/.*/, '\1')
     ss = session.spreadsheet_by_key(key)
     ss.worksheet_by_title(URI.parse(self.url).fragment)
   end
