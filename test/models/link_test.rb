@@ -162,7 +162,7 @@ class LinkTest < ActiveSupport::TestCase
   
   test "should run checkers and not remove link if not applicable" do
     stubs_config({ 'conditions' => [{ 'linkRegex' => '^https?:\/\/(www\.)?(twitter|instagram)\.com\/', 'condition' => 'check404', 'removeIfApplies' => false }]})
-    link = create_link url: 'https://twitter.com/caiosba/404', status: 200
+    link = create_link url: 'https://twitter.com/caiosba/status/549403744430215169', status: 200
     assert_no_difference 'Link.count' do
       link.check
     end
@@ -171,7 +171,7 @@ class LinkTest < ActiveSupport::TestCase
 
   test "should run checkers and remove link if applicable" do
     stubs_config({ 'conditions' => [{ 'linkRegex' => '^https?:\/\/(www\.)?(twitter|instagram)\.com\/', 'condition' => 'check404', 'removeIfApplies' => true }]})
-    link = create_link url: 'https://twitter.com/caiosba/404', status: 200
+    link = create_link url: 'https://twitter.com/caiosba/status/549403744430215169', status: 200
     assert_difference 'Link.count', -1 do
       link.check
     end
@@ -185,7 +185,7 @@ class LinkTest < ActiveSupport::TestCase
 
   test "should notify if condition is verified" do
     Link.any_instance.expects(:notify).once
-    link = create_link url: 'https://twitter.com/caiosba/404'
+    link = create_link url: 'https://twitter.com/caiosba/status/549403744430215169'
     link.check
   end
 

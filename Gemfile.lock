@@ -139,6 +139,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     retriable (1.4.1)
+    retryable (2.0.1)
     safe_yaml (1.0.4)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
@@ -189,6 +190,7 @@ DEPENDENCIES
   mocha
   mongoid (~> 4)!
   rails (= 4.0.9)
+  retryable
   sdoc
   validate_url
   webmock

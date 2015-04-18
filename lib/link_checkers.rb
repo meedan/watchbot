@@ -17,7 +17,9 @@ module LinkCheckers
 
   def check_google_spreadsheet_updated
     require 'digest/md5'
-    w = self.get_google_worksheet
+    w = Retryable.retryable tries: 5 do
+      self.get_google_worksheet
+    end
     before = Digest::MD5.hexdigest(w.rows.join)
     return false if before === self.data['hash']
     sleep 30
