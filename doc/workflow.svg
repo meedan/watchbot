@@ -2003,9 +2003,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.69848107"
-     inkscape:cx="462.67854"
-     inkscape:cy="242.86812"
+     inkscape:zoom="1.0613085"
+     inkscape:cx="451.91434"
+     inkscape:cy="288.79443"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -2026,7 +2026,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -2759,9 +2759,89 @@
          id="tspan6423"
          x="333.42883"
          y="481.45404">DelayedCronJob</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:3.63912988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
+       d="M 426.80243,365.68349 C 456.5112,356.8027 481.396,333.80131 489.678,291.49037"
+       id="path6526"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       transform="scale(0.96489704,1.03638)"
+       xml:space="preserve"
+       style="font-size:33.74531174px;font-style:normal;font-weight:normal;line-height:125%;fill:#555753;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       x="285.64099"
+       y="146.05173"
+       id="text6528"
+       sodipodi:linespacing="125%"><tspan
+         id="tspan6536"
+         sodipodi:role="line"
+         x="285.64099"
+         y="146.05173"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold">The <tspan
+   style="font-style:italic"
+   id="tspan6024">404 Checker</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="285.64099"
+         y="167.78763"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         id="tspan5015">verifies whether a</tspan><tspan
+         sodipodi:role="line"
+         x="285.64099"
+         y="189.52353"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         id="tspan5912">link from Twitter</tspan><tspan
+         sodipodi:role="line"
+         x="285.64099"
+         y="211.25943"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         id="tspan5017">or Instagram is </tspan><tspan
+         sodipodi:role="line"
+         x="285.64099"
+         y="232.99532"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         id="tspan6549">online, and returns </tspan><tspan
+         sodipodi:role="line"
+         x="285.64099"
+         y="254.73122"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         id="tspan6551">true if it's offline</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path6553"
+       d="M 466.46981,101.30388 C 452.31114,68.40662 428.71309,20.301568 328.77455,19.534983"
+       style="fill:none;stroke:#000000;stroke-width:3.63912988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text6555"
+       y="-59.980103"
+       x="338.49451"
+       style="font-size:33.74531174px;font-style:normal;font-weight:normal;line-height:125%;fill:#555753;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       xml:space="preserve"
+       transform="scale(0.96489704,1.03638)"><tspan
+         id="tspan6563"
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="-59.980103"
+         x="338.49451"
+         sodipodi:role="line">6. the client is notified</tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="-38.244205"
+         x="338.49451"
+         sodipodi:role="line"
+         id="tspan6574">through a webhook</tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="-16.508305"
+         x="338.49451"
+         sodipodi:role="line"
+         id="tspan6576">when any condition</tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="5.2275944"
+         x="338.49451"
+         sodipodi:role="line"
+         id="tspan5956">is verified to be true</tspan></text>
     <g
        id="g6518"
-       transform="translate(72.889145,-30.370477)">
+       transform="translate(67.06262,-26.953674)">
       <path
          sodipodi:nodetypes="cssssssssssssscssscsssssssssssssssssssssscsscscccssssssscc"
          inkscape:connector-curvature="0"
@@ -2803,74 +2883,179 @@
            id="tspan6441"
            style="text-align:center;text-anchor:middle">404Checker</tspan></text>
     </g>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:3.63912988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)"
-       d="m 426.80243,365.68349 c 37.80756,-16.97958 71.80351,-57.19091 78.06081,-105.57595"
-       id="path6526"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
-    <text
-       transform="scale(0.96489704,1.03638)"
-       xml:space="preserve"
-       style="font-size:33.74531174px;font-style:normal;font-weight:normal;line-height:125%;fill:#555753;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="524.8537"
-       y="286.71277"
-       id="text6528"
-       sodipodi:linespacing="125%"><tspan
-         id="tspan6536"
-         sodipodi:role="line"
-         x="524.8537"
-         y="286.71277"
-         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold">5. the only current checker</tspan><tspan
-         sodipodi:role="line"
-         x="524.8537"
-         y="308.44867"
-         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         id="tspan6547">verifies if the link is online</tspan><tspan
-         sodipodi:role="line"
-         x="524.8537"
-         y="330.18457"
-         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         id="tspan6549">or not, and returns true if</tspan><tspan
-         sodipodi:role="line"
-         x="524.8537"
-         y="351.92047"
-         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         id="tspan6551">it's offline</tspan></text>
-    <path
-       sodipodi:nodetypes="cc"
-       inkscape:connector-curvature="0"
-       id="path6553"
-       d="M 484.6921,140.7855 C 470.53343,107.88824 428.71309,20.301568 328.77455,19.534983"
-       style="fill:none;stroke:#000000;stroke-width:3.63912988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Mend)" />
+    <g
+       id="g5878"
+       transform="translate(-6.6929167,-2.3825742)">
+      <g
+         id="g5859">
+        <g
+           style="opacity:0.4"
+           transform="matrix(5.3718114e-4,0,0,5.3714219e-4,629.23342,170.072)"
+           id="Livello_x0020_1">
+          <metadata
+             id="CorelCorpID_0Corel-Layer" />
+          <polygon
+             style="fill:#3777e3"
+             class="fil0"
+             points="44385,76894 133156,76894 110963,115341 22194,115341 "
+             id="polygon3333" />
+          <polygon
+             style="fill:#ffcf63"
+             class="fil1"
+             points="133156,76894 88772,0 44385,0 88772,76894 "
+             id="polygon3335" />
+          <polygon
+             style="fill:#11a861"
+             class="fil2"
+             points="22194,115341 66578,38447 44385,0 0,76894 "
+             id="polygon3337" />
+        </g>
+        <path
+           sodipodi:type="arc"
+           style="opacity:0.2;fill:#ffff3e;fill-opacity:1;fill-rule:nonzero;stroke:#dfd700;stroke-width:2.63318443;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           id="path5023"
+           sodipodi:cx="106.07143"
+           sodipodi:cy="455.18842"
+           sodipodi:rx="59.299774"
+           sodipodi:ry="59.299774"
+           d="m 165.3712,455.18842 c 0,32.75036 -26.54941,59.29977 -59.29977,59.29977 -32.750365,0 -59.299778,-26.54941 -59.299778,-59.29977 0,-32.75037 26.549413,-59.29978 59.299778,-59.29978 32.75036,0 59.29977,26.54941 59.29977,59.29978 z"
+           transform="matrix(0.90421662,0,0,0.97120424,569.08632,-241.03166)" />
+        <g
+           id="g5047">
+          <text
+             xml:space="preserve"
+             style="font-size:13.27666092px;font-style:normal;font-weight:normal;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:3.15871167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Bitstream Vera Sans"
+             x="688.91498"
+             y="174.04767"
+             id="text5025"
+             transform="scale(0.96489704,1.03638)"><tspan
+               id="tspan5027"
+               style="text-align:center;text-anchor:middle;stroke-width:3.15871167"
+               sodipodi:role="line"
+               x="688.91498"
+               y="174.04767">Google</tspan><tspan
+               id="tspan5041"
+               style="text-align:center;text-anchor:middle;stroke-width:3.15871167"
+               sodipodi:role="line"
+               x="688.91498"
+               y="190.64349">Spreadsheet</tspan><tspan
+               id="tspan5039"
+               style="text-align:center;text-anchor:middle;stroke-width:3.15871167"
+               sodipodi:role="line"
+               x="688.91498"
+               y="207.23932">Updated</tspan><tspan
+               style="text-align:center;text-anchor:middle;stroke-width:3.15871167"
+               sodipodi:role="line"
+               x="688.91498"
+               y="223.83514"
+               id="tspan5857">Checker</tspan></text>
+          <text
+             transform="scale(0.96489704,1.03638)"
+             id="text5029"
+             y="174.04767"
+             x="688.91498"
+             style="font-size:13.27666092px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+             xml:space="preserve"><tspan
+               style="text-align:center;text-anchor:middle"
+               id="tspan5031"
+               y="174.04767"
+               x="688.91498"
+               sodipodi:role="line">Google</tspan><tspan
+               id="tspan5043"
+               style="text-align:center;text-anchor:middle"
+               y="190.64349"
+               x="688.91498"
+               sodipodi:role="line">Spreadsheet</tspan><tspan
+               id="tspan5045"
+               style="text-align:center;text-anchor:middle"
+               y="207.23932"
+               x="688.91498"
+               sodipodi:role="line">Updated</tspan><tspan
+               style="text-align:center;text-anchor:middle"
+               y="223.83514"
+               x="688.91498"
+               sodipodi:role="line"
+               id="tspan5855">Checker</tspan></text>
+        </g>
+      </g>
+    </g>
     <text
        sodipodi:linespacing="125%"
-       id="text6555"
-       y="-11.545392"
-       x="462.2886"
+       id="text5914"
+       y="299.41135"
+       x="521.70618"
        style="font-size:33.74531174px;font-style:normal;font-weight:normal;line-height:125%;fill:#555753;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
        xml:space="preserve"
        transform="scale(0.96489704,1.03638)"><tspan
-         id="tspan6563"
+         id="tspan5926"
          style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         y="-11.545392"
-         x="462.2886"
-         sodipodi:role="line">6. the client is notified</tspan><tspan
+         y="299.41135"
+         x="521.70618"
+         sodipodi:role="line">5. many conditions</tspan><tspan
          style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         y="10.190507"
-         x="462.2886"
+         y="321.14725"
+         x="521.70618"
          sodipodi:role="line"
-         id="tspan6574">through a webhook</tspan><tspan
+         id="tspan5948">are verified based on</tspan><tspan
          style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         y="31.926407"
-         x="462.2886"
+         y="342.88315"
+         x="521.70618"
          sodipodi:role="line"
-         id="tspan6578">if the link is not online</tspan><tspan
+         id="tspan5950">link patterns</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#999999;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 12;stroke-dashoffset:0"
+       id="rect5952"
+       width="295.60599"
+       height="157.92648"
+       x="600.32312"
+       y="212.1308"
+       transform="translate(-158.93445,-92.427355)"
+       ry="20.246984"
+       rx="18.222286" />
+    <path
+       style="fill:none;stroke:#999999;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 12;stroke-dashoffset:0"
+       d="m 407.14774,198.66668 57.58042,0"
+       id="path5958"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5988"
+       y="26.283173"
+       x="529.0318"
+       style="font-size:33.74531174px;font-style:normal;font-weight:normal;line-height:125%;fill:#555753;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       xml:space="preserve"
+       transform="scale(0.96489704,1.03638)"><tspan
+         id="tspan6000"
          style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
-         y="53.662304"
-         x="462.2886"
+         y="26.283173"
+         x="529.0318"
+         sodipodi:role="line">The <tspan
+   style="font-style:italic"
+   id="tspan6030">Google Spreadsheet</tspan></tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="48.01907"
+         x="529.0318"
          sodipodi:role="line"
-         id="tspan6576">anymore</tspan></text>
+         id="tspan6022"><tspan
+   style="font-style:italic"
+   id="tspan6032">Updated Checker</tspan> returns</tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="69.754967"
+         x="529.0318"
+         sodipodi:role="line"
+         id="tspan6026">true if a Google Spreadsheet</tspan><tspan
+         style="font-size:24.15099907px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:89.99999762%;writing-mode:lr-tb;text-anchor:start;fill:#555753;font-family:Burst My Bubble;-inkscape-font-specification:Burst My Bubble Bold"
+         y="91.490868"
+         x="529.0318"
+         sodipodi:role="line"
+         id="tspan6028">was updated</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path6034"
+       d="m 658.30495,81.5169 0,57.58046"
+       style="fill:none;stroke:#999999;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 12;stroke-dashoffset:0" />
   </g>
   <style
      id="style6194"
