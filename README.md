@@ -1,4 +1,4 @@
-## WatchBot
+## Watchbot
 
 [![Code Climate](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/gpa.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
 [![Test Coverage](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/coverage.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
@@ -8,7 +8,7 @@
 
 Subsystem that continuously monitors web links to verify certain conditions and states.
 
-The architecture is a self-contained system that receives links from clients and monitors those links on behalf of those clients. The monitoring activity is scheduled by the WatchBot according to a configured schedule. The act of monitoring consists of verifying certain conditions (such as checking for HTTP 404 on a link) and notifying the client via a web hook in case the condition is true. Some conditions are general to all links, while other only apply to certain links (e.g. based on their host).
+The architecture is a self-contained system that receives links from clients and monitors those links on behalf of those clients. The monitoring activity is scheduled by the Watchbot according to a configured schedule. The act of monitoring consists of verifying certain conditions (such as checking for HTTP 404 on a link) and notifying the client via a web hook in case the condition is true. Some conditions are general to all links, while other only apply to certain links (e.g. based on their host).
 
 ![Workflow](doc/workflow.png?raw=true "Workflow")
 
@@ -18,9 +18,21 @@ The architecture is a self-contained system that receives links from clients and
 
 This checker verifies if the link is still online or not. It returns `true` if the HTTP response for the link is on the 400 range.
 
-### How to communicate with the WatchBot
+#### Google Spreadsheet Updated Checker
 
-The client communicates with the WatchBot via a REST interface:
+This checker verifies if a Google Spreadsheet was updated or not. This is done based on a MD5 hash of the its rows. If the hash changes
+within 30 seconds, it's because probably someone is still editing the spreadsheet, so on this case it returns false.
+
+### How to write your own checker
+
+In order to write a new checker, you just need to:
+
+1. Add the new condition to the `conditions` property on `config/watchbot.yml`
+2. Write a new method with your condition name under the module `LinkCheckers` (this method should return `true` or `false` and can write/read link data on its `data` attribute, which is a hash)
+
+### How to communicate with the Watchbot
+
+The client communicates with the Watchbot via a REST interface:
 
 * Add a link: `POST /links {"url":"link"}` which returns `{"type":"success"}` in case of success or `{"type":"error","data":{"message":"Error message","code":"error code"}}` otherwise.
 
@@ -28,7 +40,7 @@ The client communicates with the WatchBot via a REST interface:
 
 Check the script at `scripts/test.sh` to see how these endpoints can be called.
 
-When a condition is verified, the client is notified through a webhook. An example simple client written in Sinatra can be found at `scripts/sinatra.rb`, which runs by default at `http://localhost:4567` and has a `/payload` API enpoint to receive the notifications from the WatchBot. It's necessary to setup a `secret_token` on both client and server in order to verify the communication.
+When a condition is verified, the client is notified through a webhook. An example simple client written in Sinatra can be found at `scripts/sinatra.rb`, which runs by default at `http://localhost:4567` and has a `/payload` API enpoint to receive the notifications from the Watchbot. It's necessary to setup a `secret_token` on both client and server in order to verify the communication.
 
 The example client webhook can be run by: `SECRET_TOKEN=mysecrettoken ruby scripts/sinatra.rb`
 
@@ -47,7 +59,7 @@ In case of an invalid secret token, it will just return an error 500:
 
 ### Configuration
 
-The WatchBot is configured with the following options (at `config/watchbot.yml`):
+The Watchbot is configured with the following options (at `config/watchbot.yml`):
 
 ```yaml
 webhook:
@@ -78,11 +90,20 @@ conditions: [
   # :condition(:link) -> :boolean is a function that returns true when the condition applies, false when it doesn't apply.
   # If the condition applies and :removeIfApplies is true, then the link should be removed from the database.
   { 
-    linkRegex: '.*',
+    linkRegex: '^https?:\/\/(www\.)?(twitter|instagram)\.com\/',
     condition: check404,
+    removeIfApplies: true
+  },
+  { 
+    linkRegex: '^https?:\/\/docs\.google\.com\/',
+    condition: check_google_spreadsheet_updated,
     removeIfApplies: false
   }
 ]
+settings:
+  google_email:
+  google_password:
+  # Other settings required by checkers go here...
 ```
 
 ### Installation
@@ -103,4 +124,4 @@ There are some rake tasks to perform administrative actions. For example:
 
 ### Automated tests
 
-Run the test suite by calling `rake test:coverage`.
+Run the test suite and coverage by calling `rake test:coverage`.
