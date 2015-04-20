@@ -44,13 +44,14 @@ class Link
   end
 
   def notify(condition)
-    payload = { link: self.url, condition: condition, timestamp: Time.now.to_i }.to_json
+    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i }.to_json
     uri = URI(WATCHBOT_CONFIG['webhook']['callback_url'])
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme == 'https'
     request = Net::HTTP::Post.new(uri.path)
     request.body = payload
     request['X-Watchbot-Signature'] = notification_signature(payload)
+    request['Content-Type'] = 'application/json'
     http.request(request)
   end
 
