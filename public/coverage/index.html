@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-04-20T13:45:39-03:00">2015-04-20T13:45:39-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-28T18:35:50-03:00">2015-05-28T18:35:50-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>6</b> files in total.
-    <b>133</b> relevant lines. 
-    <span class="green"><b>133</b> lines covered</span> and
+    <b>151</b> relevant lines. 
+    <span class="green"><b>151</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -87,17 +87,17 @@
         <td>45</td>
         <td>45</td>
         <td>0</td>
-        <td>8.8</td>
+        <td>9.4</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>46</td>
-        <td>32</td>
-        <td>32</td>
+        <td>82</td>
+        <td>50</td>
+        <td>50</td>
         <td>0</td>
-        <td>5.3</td>
+        <td>4.8</td>
       </tr>
       
       <tr>
@@ -107,7 +107,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>10.7</td>
+        <td>11.6</td>
       </tr>
       
     </tbody>
@@ -180,7 +180,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.35
+         7.8
        </span>
     </span> hits/line)
   </h2>
@@ -222,7 +222,7 @@
         <td>45</td>
         <td>45</td>
         <td>0</td>
-        <td>8.8</td>
+        <td>9.4</td>
       </tr>
       
     </tbody>
@@ -311,15 +311,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.27
+         5.64
        </span>
     </span> hits/line)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>2</b> files in total.
-    <b>39</b> relevant lines. 
-    <span class="green"><b>39</b> lines covered</span> and
+    <b>57</b> relevant lines. 
+    <span class="green"><b>57</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -339,11 +339,11 @@
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>46</td>
-        <td>32</td>
-        <td>32</td>
+        <td>82</td>
+        <td>50</td>
+        <td>50</td>
         <td>0</td>
-        <td>5.3</td>
+        <td>4.8</td>
       </tr>
       
       <tr>
@@ -353,7 +353,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>10.7</td>
+        <td>11.6</td>
       </tr>
       
     </tbody>
@@ -1165,26 +1165,26 @@
           <code class="ruby">  def calculate_cron</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="23">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="38" data-linenumber="23">
+          <span class="hits">38</span>
           
           <code class="ruby">    cron = nil</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="24">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="38" data-linenumber="24">
+          <span class="hits">38</span>
           
           <code class="ruby">    diff = (Time.now - self.created_at).to_i</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="25">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="38" data-linenumber="25">
+          <span class="hits">38</span>
           
           <code class="ruby">    WATCHBOT_CONFIG[&#39;schedule&#39;].each do |schedule|</code>
         </li>
       
-        <li class="covered" data-hits="101" data-linenumber="26">
-          <span class="hits">101</span>
+        <li class="covered" data-hits="110" data-linenumber="26">
+          <span class="hits">110</span>
           
           <code class="ruby">      cron = schedule[&#39;interval&#39;] if cron.nil? &amp;&amp; (schedule[&#39;to&#39;].blank? || diff &lt; schedule[&#39;to&#39;])</code>
         </li>
@@ -1195,8 +1195,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="28">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="38" data-linenumber="28">
+          <span class="hits">38</span>
           
           <code class="ruby">    cron</code>
         </li>
@@ -1417,14 +1417,14 @@
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="65">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="34" data-linenumber="65">
+          <span class="hits">34</span>
           
           <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="66">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="34" data-linenumber="66">
+          <span class="hits">34</span>
           
           <code class="ruby">    self.save!</code>
         </li>
@@ -1450,8 +1450,8 @@
     <h3>lib/link_checkers.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>32</b> relevant lines. 
-      <span class="green"><b>32</b> lines covered</span> and
+      <b>50</b> relevant lines. 
+      <span class="green"><b>50</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1687,49 +1687,265 @@
           <code class="ruby">  def get_google_worksheet</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="39">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="9" data-linenumber="39">
+          <span class="hits">9</span>
           
           <code class="ruby">    require &#39;google_drive&#39;</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="40">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    session = GoogleDrive::Session.login(WATCHBOT_CONFIG[&#39;settings&#39;][&#39;google_email&#39;], WATCHBOT_CONFIG[&#39;settings&#39;][&#39;google_password&#39;])</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="41">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    key = self.url.gsub(/https:\/\/docs\.google\.com\/.*\/d\/([^\/]+)\/.*/, &#39;\1&#39;)</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="42">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    ss = session.spreadsheet_by_key(key)</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="43">
-          <span class="hits">7</span>
-          
-          <code class="ruby">    ss.worksheet_by_title(URI.parse(self.url).fragment)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="44">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="covered" data-hits="9" data-linenumber="41">
+          <span class="hits">9</span>
+          
+          <code class="ruby">    session = spreadsheet = nil</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="42">
+          <span class="hits">9</span>
+          
+          <code class="ruby">    key = self.url.gsub(/https:\/\/docs\.google\.com\/.*\/d\/([^\/]+)\/.*/, &#39;\1&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="44">
+          <span class="hits">9</span>
+          
+          <code class="ruby">    begin</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="45">
+          <span class="hits">9</span>
+          
+          <code class="ruby">      access_token = Rails.cache.fetch(&#39;!google_access_token&#39;) do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="46">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        generate_google_access_token</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="48">
+          <span class="hits">9</span>
+          
+          <code class="ruby">      session = GoogleDrive.login_with_oauth(access_token)</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="49">
+          <span class="hits">9</span>
+          
+          <code class="ruby">      spreadsheet = session.spreadsheet_by_key(key)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">    rescue Google::APIClient::AuthorizationError</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      access_token = generate_google_access_token</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      Rails.cache.write(&#39;!google_access_token&#39;, access_token)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="53">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      session = GoogleDrive.login_with_oauth(access_token)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      spreadsheet = session.spreadsheet_by_key(key)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="57">
+          <span class="hits">9</span>
+          
+          <code class="ruby">    spreadsheet.worksheet_by_title(URI.parse(self.url).fragment)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def generate_google_access_token</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="63">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    require &#39;google/api_client&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="64">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    require &#39;google/api_client/client_secrets&#39;</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="65">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    require &#39;google/api_client/auth/installed_app&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="67">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    client = Google::APIClient.new(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="68">
+          
+          
+          <code class="ruby">      :application_name =&gt; &#39;Watchbot&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">      :application_version =&gt; &#39;1.0.0&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">    )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">    </code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="72">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    key = Google::APIClient::KeyUtils.load_from_pkcs12(WATCHBOT_CONFIG[&#39;settings&#39;][&#39;google_pkcs12_path&#39;], WATCHBOT_CONFIG[&#39;settings&#39;][&#39;google_pkcs12_secret&#39;])</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="73">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    client.authorization = Signet::OAuth2::Client.new(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">      :token_credential_uri =&gt; &#39;https://accounts.google.com/o/oauth2/token&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">      :audience =&gt; &#39;https://accounts.google.com/o/oauth2/token&#39;,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">      :scope =&gt; [&#39;https://www.googleapis.com/auth/drive&#39;, &#39;https://spreadsheets.google.com/feeds/&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">      :issuer =&gt; WATCHBOT_CONFIG[&#39;settings&#39;][&#39;google_issuer&#39;],</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">      :signing_key =&gt; key)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="79">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    client.authorization.fetch_access_token!</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="80">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    client.authorization.access_token</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
           
           
           <code class="ruby">end</code>
@@ -1789,8 +2005,8 @@
           <code class="ruby">  def queue_name</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="7">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="34" data-linenumber="7">
+          <span class="hits">34</span>
           
           <code class="ruby">    &#39;watch_job&#39;</code>
         </li>
@@ -1813,8 +2029,8 @@
           <code class="ruby">  def calculate_cron(job)</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="11">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="38" data-linenumber="11">
+          <span class="hits">38</span>
           
           <code class="ruby">    link.calculate_cron unless link.nil?</code>
         </li>

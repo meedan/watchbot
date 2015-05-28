@@ -259,4 +259,26 @@ class LinkTest < ActiveSupport::TestCase
     link.save!
     assert_equal({ 'foo' => 'bar' }, link.reload.data)
   end
+
+  test "should get access token" do
+    Rails.cache.delete('!google_access_token')
+    link = create_link
+    assert_kind_of String, link.send(:generate_google_access_token)
+  end
+
+  test "should ask for access token" do
+    Rails.cache.delete('!google_access_token')
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    assert_nothing_raised do
+      link.get_google_worksheet
+    end
+  end
+
+  test "should refresh token" do
+    Rails.cache.expects(:fetch).returns('invalid token')
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
+    assert_nothing_raised do
+      link.get_google_worksheet
+    end
+  end
 end

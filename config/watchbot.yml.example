@@ -38,8 +38,9 @@ development: &default
     }
   ]
   settings:
-    google_email:
-    google_password:
+    google_issuer:
+    google_pkcs12_path:
+    google_pkcs12_secret:
 test:
   <<: *default
 production:
