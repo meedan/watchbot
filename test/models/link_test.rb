@@ -78,10 +78,10 @@ class LinkTest < ActiveSupport::TestCase
     Time.stubs(:now).returns(Time.parse('2015-01-09 09:00:00'))
     link = create_link created_at: Time.parse('2015-01-01 09:00:00')
     job = link.delayed_job
-    assert_equal Time.parse('2015-01-10 00:00:00').utc, job.run_at.utc
+    assert_equal Time.parse('2015-01-10 01:00:00').utc, job.run_at.utc
     Time.stubs(:now).returns(Time.parse('2015-01-10 10:02:00'))
     Delayed::Worker.new.work_off
-    assert_equal Time.parse('2015-01-11 00:00:00').utc, job.reload.run_at.utc
+    assert_equal Time.parse('2015-01-11 01:00:00').utc, job.reload.run_at.utc
   end
 
   test "should stop checker" do
@@ -122,13 +122,13 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that URL is online" do
     link = create_link url: 'http://www.google.com'
     assert !link.check404
-    assert_equal 302, link.reload.status
+    assert_equal 200, link.reload.status
   end
 
   test "should check that HTTPS URL is online" do
     link = create_link url: 'https://www.google.com'
     assert !link.check404
-    assert_equal 302, link.reload.status
+    assert_equal 200, link.reload.status
   end
 
   test "should have status" do
@@ -279,6 +279,16 @@ class LinkTest < ActiveSupport::TestCase
     link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#test'
     assert_nothing_raised do
       link.get_google_worksheet
+    end
+  end
+
+  test "should not crash if payload object was removed" do
+    stubs_config({ 'conditions' => [{ 'linkRegex' => '^https?:\/\/(www\.)?(twitter|instagram)\.com\/', 'condition' => 'check404', 'removeIfApplies' => true }]})
+    link = create_link url: 'https://twitter.com/caiosba/status/549403744430215169', status: 200
+    job = link.job
+    Time.stubs(:now).returns(link.created_at.since(5.minutes))
+    assert_nothing_raised do
+      Delayed::Worker.new.work_off
     end
   end
 end
