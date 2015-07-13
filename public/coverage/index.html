@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-05-28T18:35:50-03:00">2015-05-28T18:35:50-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-07-13T15:25:23-03:00">2015-07-13T15:25:23-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.7
+         5.78
        </span>
     </span> hits/line)
   </h2>
@@ -87,7 +87,7 @@
         <td>45</td>
         <td>45</td>
         <td>0</td>
-        <td>9.4</td>
+        <td>9.6</td>
       </tr>
       
       <tr>
@@ -107,7 +107,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>11.6</td>
+        <td>11.9</td>
       </tr>
       
     </tbody>
@@ -180,7 +180,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.8
+         7.95
        </span>
     </span> hits/line)
   </h2>
@@ -222,7 +222,7 @@
         <td>45</td>
         <td>45</td>
         <td>0</td>
-        <td>9.4</td>
+        <td>9.6</td>
       </tr>
       
     </tbody>
@@ -311,7 +311,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.64
+         5.67
        </span>
     </span> hits/line)
   </h2>
@@ -353,7 +353,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>11.6</td>
+        <td>11.9</td>
       </tr>
       
     </tbody>
@@ -1165,26 +1165,26 @@
           <code class="ruby">  def calculate_cron</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="23">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="39" data-linenumber="23">
+          <span class="hits">39</span>
           
           <code class="ruby">    cron = nil</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="24">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="39" data-linenumber="24">
+          <span class="hits">39</span>
           
           <code class="ruby">    diff = (Time.now - self.created_at).to_i</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="25">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="39" data-linenumber="25">
+          <span class="hits">39</span>
           
           <code class="ruby">    WATCHBOT_CONFIG[&#39;schedule&#39;].each do |schedule|</code>
         </li>
       
-        <li class="covered" data-hits="110" data-linenumber="26">
-          <span class="hits">110</span>
+        <li class="covered" data-hits="113" data-linenumber="26">
+          <span class="hits">113</span>
           
           <code class="ruby">      cron = schedule[&#39;interval&#39;] if cron.nil? &amp;&amp; (schedule[&#39;to&#39;].blank? || diff &lt; schedule[&#39;to&#39;])</code>
         </li>
@@ -1195,8 +1195,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="28">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="39" data-linenumber="28">
+          <span class="hits">39</span>
           
           <code class="ruby">    cron</code>
         </li>
@@ -1381,8 +1381,8 @@
           <code class="ruby">  def job</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="59">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="59">
+          <span class="hits">2</span>
           
           <code class="ruby">    self.delayed_job</code>
         </li>
@@ -1417,14 +1417,14 @@
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="34" data-linenumber="65">
-          <span class="hits">34</span>
+        <li class="covered" data-hits="35" data-linenumber="65">
+          <span class="hits">35</span>
           
           <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)</code>
         </li>
       
-        <li class="covered" data-hits="34" data-linenumber="66">
-          <span class="hits">34</span>
+        <li class="covered" data-hits="35" data-linenumber="66">
+          <span class="hits">35</span>
           
           <code class="ruby">    self.save!</code>
         </li>
@@ -2005,8 +2005,8 @@
           <code class="ruby">  def queue_name</code>
         </li>
       
-        <li class="covered" data-hits="34" data-linenumber="7">
-          <span class="hits">34</span>
+        <li class="covered" data-hits="35" data-linenumber="7">
+          <span class="hits">35</span>
           
           <code class="ruby">    &#39;watch_job&#39;</code>
         </li>
@@ -2029,8 +2029,8 @@
           <code class="ruby">  def calculate_cron(job)</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="11">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="39" data-linenumber="11">
+          <span class="hits">39</span>
           
           <code class="ruby">    link.calculate_cron unless link.nil?</code>
         </li>
