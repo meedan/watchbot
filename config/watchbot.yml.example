@@ -7,7 +7,7 @@ development: &default
     #   timestamp: the time at which the condition was verified
     # }
     # 
-    # The HTTP header X-Watchbot-Signature is set to a hash signature of the post body. 
+    # The HTTP header X-Signature is set to a hash signature of the post body. 
     # The :secret_token configuration is used to compute the signature.
     # Refer to https://developer.github.com/webhooks/securing/ [^] for implementation details
     callback_url: http://localhost:4567/payload

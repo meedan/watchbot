@@ -50,7 +50,7 @@ class Link
     http.use_ssl = uri.scheme == 'https'
     request = Net::HTTP::Post.new(uri.path)
     request.body = payload
-    request['X-Watchbot-Signature'] = notification_signature(payload)
+    request['X-Signature'] = notification_signature(payload)
     request['Content-Type'] = 'application/json'
     http.request(request)
   end
