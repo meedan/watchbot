@@ -13,3 +13,5 @@ gem 'delayed_cron_job', git: 'https://github.com/meedan/delayed_cron_job', branc
 gem 'webmock'
 gem 'google_drive', '1.0.1'
 gem 'retryable'
+gem 'koala'
+gem 'twitter'

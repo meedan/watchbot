@@ -291,4 +291,70 @@ class LinkTest < ActiveSupport::TestCase
       Delayed::Worker.new.work_off
     end
   end
+
+  test "should get number of likes and shares from Facebook link" do
+    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    resp = link.check_facebook_numbers
+    assert_equal 2, resp['likes']
+    assert_equal 1, resp['shares']
+    assert_equal resp, link.reload.data
+  end
+
+  test "should return false if number of likes and shares from Facebook link did not change" do
+    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    resp = link.check_facebook_numbers
+    resp = link.check_facebook_numbers
+    assert !resp
+  end
+
+  test "should return false if exception is thrown when getting numbers from Facebook" do
+    Link.any_instance.expects(:get_shares_and_likes_from_facebook).raises(RuntimeError)
+    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    resp = link.check_facebook_numbers
+    assert !resp
+  end
+
+  test "should get number of likes and retweets from Twitter link from API" do
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_api
+    assert_equal 3, resp['shares']
+    assert_equal 4, resp['likes']
+    assert_equal resp, link.reload.data
+  end
+
+  test "should return false if number of likes and shares from Twitter link from API did not change" do
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_api
+    resp = link.check_twitter_numbers_from_api
+    assert !resp
+  end
+
+  test "should return false if exception is thrown when getting numbers from Twitter API" do
+    Link.any_instance.expects(:get_shares_and_likes_from_twitter_api).raises(RuntimeError)
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_api
+    assert !resp
+  end
+
+  test "should get number of likes and retweets from Twitter link from HTML" do
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_html
+    assert_equal 3, resp['shares']
+    assert_equal 4, resp['likes']
+    assert_equal resp, link.reload.data
+  end
+
+  test "should return false if number of likes and shares from Twitter link from HTML did not change" do
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_html
+    resp = link.check_twitter_numbers_from_html
+    assert !resp
+  end
+
+  test "should return false if exception is thrown when getting numbers from Twitter HTML" do
+    Link.any_instance.expects(:get_shares_and_likes_from_twitter_html).raises(RuntimeError)
+    link = create_link url: 'https://twitter.com/statuses/638402604188303360'
+    resp = link.check_twitter_numbers_from_html
+    assert !resp
+  end
 end

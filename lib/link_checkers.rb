@@ -1,4 +1,15 @@
 module LinkCheckers
+  def check_facebook_numbers
+    get_shares_and_likes(:get_shares_and_likes_from_facebook)
+  end
+
+  def check_twitter_numbers_from_api
+    get_shares_and_likes(:get_shares_and_likes_from_twitter_api)
+  end
+
+  def check_twitter_numbers_from_html
+    get_shares_and_likes(:get_shares_and_likes_from_twitter_html)
+  end
 
   def check404
     uri = URI.parse(self.url).normalize
@@ -12,7 +23,7 @@ module LinkCheckers
       code = 404
     end
     self.update_attributes(status: code) if code != self.status
-    code / 100 === 4
+    code / 100 === 4 ? 'check404' : false
   end
 
   def check_google_spreadsheet_updated
@@ -29,7 +40,7 @@ module LinkCheckers
     if before === after
       self.data['hash'] = after
       self.save!
-      return true
+      return 'check_google_spreadsheet_updated'
     else
       return false
     end
@@ -56,6 +67,27 @@ module LinkCheckers
 
     spreadsheet.worksheet_by_title(URI.parse(self.url).fragment)
   end
+  
+  protected
+
+  def get_shares_and_likes(method)
+    likes = self.data['likes'] || 0
+    shares = self.data['shares'] || 0
+    begin
+      numbers = send(method)
+      likes = numbers['likes']
+      shares = numbers['shares']
+    rescue
+      return false
+    end
+
+    if likes == self.data['likes'] && shares = self.data['shares']
+      return false
+    end
+    self.data = { 'likes' => likes, 'shares' => shares }
+    self.save!
+    self.data
+  end
 
   private
 
@@ -78,5 +110,44 @@ module LinkCheckers
       :signing_key => key)
     client.authorization.fetch_access_token!
     client.authorization.access_token
+  end
+
+  def connect_to_twitter
+    Twitter::REST::Client.new do |config|
+      config.consumer_key        = WATCHBOT_CONFIG['settings']['twitter_consumer_key']
+      config.consumer_secret     = WATCHBOT_CONFIG['settings']['twitter_consumer_secret']
+      config.access_token        = WATCHBOT_CONFIG['settings']['twitter_access_token']
+      config.access_token_secret = WATCHBOT_CONFIG['settings']['twitter_access_token_secret']
+    end
+  end
+
+  def get_shares_and_likes_from_facebook
+    graph = Koala::Facebook::API.new(WATCHBOT_CONFIG['settings']['facebook_auth_token'])
+    object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\//, ''), fields: 'likes.summary(true),shares.summary(true)')
+    { 'likes' => object['likes']['summary']['total_count'], 'shares' => object['shares']['count'] }
+  end
+
+  def get_shares_and_likes_from_twitter_api
+    id = self.url.gsub(/^https?:\/\/(www\.)?twitter\.com\/statuses\//, '')
+    tweet = connect_to_twitter.status(id)
+    { 'likes' => tweet.favorite_count, 'shares' => tweet.retweet_count }
+  end
+
+  def get_shares_and_likes_from_twitter_html
+    data = parse_html({ 'likes' => '.js-stat-favorites strong', 'shares' => '.js-stat-retweets strong' })
+    { 'likes' => data['likes'].to_i, 'shares' => data['shares'].to_i }
+  end
+
+  # grok: key => CSS selector
+  def parse_html(groks = {})
+    require 'open-uri'
+    require 'nokogiri'
+    html = open(self.url)
+    doc = Nokogiri::HTML(html)
+    resp = {}
+    groks.each do |key, css|
+      resp[key] = doc.css(css).inner_html
+    end
+    resp
   end
 end

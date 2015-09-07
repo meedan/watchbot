@@ -31,8 +31,9 @@ class Link
   def check
     WATCHBOT_CONFIG['conditions'].each do |condition|
       if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
-        if send(condition['condition'])
-          notify(condition['condition'])
+        output = send(condition['condition'])
+        if output 
+          notify(output)
           self.destroy if condition['removeIfApplies']
         end
       end
