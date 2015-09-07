@@ -23,12 +23,24 @@ This checker verifies if the link is still online or not. It returns `true` if t
 This checker verifies if a Google Spreadsheet was updated or not. This is done based on a MD5 hash of the its rows. If the hash changes
 within 30 seconds, it's because probably someone is still editing the spreadsheet, so on this case it returns false.
 
+#### Facebook Likes & Shares
+
+This checker verifies the number of likes and shares of a Facebook post, using Facebook Graph API. Returns false if the numbers haven't changed since the last check or if it was not possible to connect to Facebook API. Returns a hash `{ :likes, :shares }` otherwise.
+
+#### Twitter Favorites & Retweets (API)
+
+This checker verifies the number of favorites (likes) and retweets (shares) of a tweet, using Twitter REST API. Returns false if the numbers haven't changed since the last check or if it was not possible to connect to Twitter API. Returns a hash `{ :likes, :shares }` otherwise.
+
+#### Twitter Favorites & Retweets (HTML)
+
+This checker verifies the number of favorites (likes) and retweets (shares) of a tweet, by scraping the HTML page of the tweet. Returns false if the numbers haven't changed since the last check or if it was not possible to parse the HTML page. Returns a hash `{ :likes, :shares }` otherwise.
+
 ### How to write your own checker
 
 In order to write a new checker, you just need to:
 
 1. Add the new condition to the `conditions` property on `config/watchbot.yml`
-2. Write a new method with your condition name under the module `LinkCheckers` (this method should return `true` or `false` and can write/read link data on its `data` attribute, which is a hash)
+2. Write a new method with your condition name under the module `LinkCheckers` (this method should return `false` in order to not notify the client or any other thing, which will be notified to the client, and can write/read link data on its `data` attribute, which is a hash)
 
 ### How to communicate with the Watchbot
 
