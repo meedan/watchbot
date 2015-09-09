@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-07T04:50:09-03:00">2015-09-07T04:50:09-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-09-09T01:54:20-03:00">2015-09-09T01:54:20-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.86
+         5.84
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>6</b> files in total.
-    <b>198</b> relevant lines. 
-    <span class="green"><b>198</b> lines covered</span> and
+    <b>199</b> relevant lines. 
+    <span class="green"><b>199</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -83,11 +83,11 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>69</td>
-        <td>46</td>
-        <td>46</td>
+        <td>70</td>
+        <td>47</td>
+        <td>47</td>
         <td>0</td>
-        <td>11.3</td>
+        <td>11.1</td>
       </tr>
       
       <tr>
@@ -180,15 +180,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         9.26
+         9.14
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>2</b> files in total.
-    <b>61</b> relevant lines. 
-    <span class="green"><b>61</b> lines covered</span> and
+    <b>62</b> relevant lines. 
+    <span class="green"><b>62</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -218,11 +218,11 @@
       <tr>
         <td class="strong"><a href="#73db8de902bcae10fe2bae9f4b91a60b43cb290c" class="src_link" title="app/models/link.rb">app/models/link.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>69</td>
-        <td>46</td>
-        <td>46</td>
+        <td>70</td>
+        <td>47</td>
+        <td>47</td>
         <td>0</td>
-        <td>11.3</td>
+        <td>11.1</td>
       </tr>
       
     </tbody>
@@ -1024,8 +1024,8 @@
     <h3>app/models/link.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>46</b> relevant lines. 
-      <span class="green"><b>46</b> lines covered</span> and
+      <b>47</b> relevant lines. 
+      <span class="green"><b>47</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1234,214 +1234,220 @@
         <li class="covered" data-hits="5" data-linenumber="34">
           <span class="hits">5</span>
           
-          <code class="ruby">        output = send(condition[&#39;condition&#39;])</code>
+          <code class="ruby">        name = condition[&#39;condition&#39;]</code>
         </li>
       
         <li class="covered" data-hits="5" data-linenumber="35">
           <span class="hits">5</span>
           
-          <code class="ruby">        if output </code>
+          <code class="ruby">        output = send(name)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="36">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="5" data-linenumber="36">
+          <span class="hits">5</span>
           
-          <code class="ruby">          notify(output)</code>
+          <code class="ruby">        if output </code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="37">
           <span class="hits">3</span>
           
-          <code class="ruby">          self.destroy if condition[&#39;removeIfApplies&#39;]</code>
+          <code class="ruby">          notify(name, output)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="covered" data-hits="3" data-linenumber="38">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">          self.destroy if condition[&#39;removeIfApplies&#39;]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="43">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">  def notification_signature(payload)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="44">
+        <li class="covered" data-hits="4" data-linenumber="45">
           <span class="hits">4</span>
           
           <code class="ruby">    &#39;sha1=&#39; + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new(&#39;sha1&#39;), WATCHBOT_CONFIG[&#39;webhook&#39;][&#39;secret_token&#39;], payload)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="46">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="47">
+        <li class="covered" data-hits="1" data-linenumber="48">
           <span class="hits">1</span>
           
-          <code class="ruby">  def notify(condition)</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="48">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i }.to_json</code>
+          <code class="ruby">  def notify(condition, data = {})</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="49">
           <span class="hits">3</span>
           
-          <code class="ruby">    uri = URI(WATCHBOT_CONFIG[&#39;webhook&#39;][&#39;callback_url&#39;])</code>
+          <code class="ruby">    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i, data: data }.to_json</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="50">
           <span class="hits">3</span>
           
-          <code class="ruby">    http = Net::HTTP.new(uri.host, uri.port)</code>
+          <code class="ruby">    uri = URI(WATCHBOT_CONFIG[&#39;webhook&#39;][&#39;callback_url&#39;])</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="51">
           <span class="hits">3</span>
           
-          <code class="ruby">    http.use_ssl = uri.scheme == &#39;https&#39;</code>
+          <code class="ruby">    http = Net::HTTP.new(uri.host, uri.port)</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="52">
           <span class="hits">3</span>
           
-          <code class="ruby">    request = Net::HTTP::Post.new(uri.path)</code>
+          <code class="ruby">    http.use_ssl = uri.scheme == &#39;https&#39;</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="53">
           <span class="hits">3</span>
           
-          <code class="ruby">    request.body = payload</code>
+          <code class="ruby">    request = Net::HTTP::Post.new(uri.path)</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="54">
           <span class="hits">3</span>
           
-          <code class="ruby">    request[&#39;X-Signature&#39;] = notification_signature(payload)</code>
+          <code class="ruby">    request.body = payload</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="55">
           <span class="hits">3</span>
           
-          <code class="ruby">    request[&#39;Content-Type&#39;] = &#39;application/json&#39;</code>
+          <code class="ruby">    request[&#39;X-Signature&#39;] = notification_signature(payload)</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="56">
           <span class="hits">3</span>
           
-          <code class="ruby">    http.request(request)</code>
+          <code class="ruby">    request[&#39;Content-Type&#39;] = &#39;application/json&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="57">
+        <li class="covered" data-hits="3" data-linenumber="57">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    http.request(request)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="59">
+        <li class="covered" data-hits="1" data-linenumber="60">
           <span class="hits">1</span>
           
           <code class="ruby">  def job</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="60">
+        <li class="covered" data-hits="2" data-linenumber="61">
           <span class="hits">2</span>
           
           <code class="ruby">    self.delayed_job</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="62">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="63">
+        <li class="covered" data-hits="1" data-linenumber="64">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="64">
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
+        <li class="covered" data-hits="1" data-linenumber="66">
           <span class="hits">1</span>
           
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="44" data-linenumber="66">
+        <li class="covered" data-hits="44" data-linenumber="67">
           <span class="hits">44</span>
           
           <code class="ruby">    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)</code>
         </li>
       
-        <li class="covered" data-hits="44" data-linenumber="67">
+        <li class="covered" data-hits="44" data-linenumber="68">
           <span class="hits">44</span>
           
           <code class="ruby">    self.save!</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="69">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">end</code>
@@ -1618,7 +1624,7 @@
         <li class="covered" data-hits="9" data-linenumber="26">
           <span class="hits">9</span>
           
-          <code class="ruby">    code / 100 === 4 ? &#39;check404&#39; : false</code>
+          <code class="ruby">    code / 100 === 4</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="27">
@@ -1720,7 +1726,7 @@
         <li class="covered" data-hits="3" data-linenumber="43">
           <span class="hits">3</span>
           
-          <code class="ruby">      return &#39;check_google_spreadsheet_updated&#39;</code>
+          <code class="ruby">      return true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">

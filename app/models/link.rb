@@ -31,9 +31,10 @@ class Link
   def check
     WATCHBOT_CONFIG['conditions'].each do |condition|
       if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
-        output = send(condition['condition'])
+        name = condition['condition']
+        output = send(name)
         if output 
-          notify(output)
+          notify(name, output)
           self.destroy if condition['removeIfApplies']
         end
       end
@@ -44,8 +45,8 @@ class Link
     'sha1=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), WATCHBOT_CONFIG['webhook']['secret_token'], payload)
   end
 
-  def notify(condition)
-    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i }.to_json
+  def notify(condition, data = {})
+    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i, data: data }.to_json
     uri = URI(WATCHBOT_CONFIG['webhook']['callback_url'])
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme == 'https'

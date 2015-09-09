@@ -23,7 +23,7 @@ module LinkCheckers
       code = 404
     end
     self.update_attributes(status: code) if code != self.status
-    code / 100 === 4 ? 'check404' : false
+    code / 100 === 4
   end
 
   def check_google_spreadsheet_updated
@@ -40,7 +40,7 @@ module LinkCheckers
     if before === after
       self.data['hash'] = after
       self.save!
-      return 'check_google_spreadsheet_updated'
+      return true
     else
       return false
     end
