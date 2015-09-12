@@ -293,7 +293,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should get number of likes and shares from Facebook link" do
-    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    link = create_link url: 'https://facebook.com/749262715138323/posts/990190297712229'
     resp = link.check_facebook_numbers
     assert_equal 2, resp['likes']
     assert_equal 1, resp['shares']
@@ -301,7 +301,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should return false if number of likes and shares from Facebook link did not change" do
-    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    link = create_link url: 'https://facebook.com/749262715138323/posts/990190297712229'
     resp = link.check_facebook_numbers
     resp = link.check_facebook_numbers
     assert !resp
@@ -309,7 +309,7 @@ class LinkTest < ActiveSupport::TestCase
 
   test "should return false if exception is thrown when getting numbers from Facebook" do
     Link.any_instance.expects(:get_shares_and_likes_from_facebook).raises(RuntimeError)
-    link = create_link url: 'https://facebook.com/749262715138323_990190297712229'
+    link = create_link url: 'https://facebook.com/749262715138323/posts/990190297712229'
     resp = link.check_facebook_numbers
     assert !resp
   end
@@ -383,5 +383,29 @@ class LinkTest < ActiveSupport::TestCase
         create_link url: 'http://test.com'
       end
     end
+  end
+
+  test "should check that Facebook post is offline" do
+    l = create_link url: 'https://facebook.com/749262715138323/posts/996333003764625'
+    l.check404
+    assert_equal 404, l.reload.status
+  end
+
+  test "should check that Facebook post is online" do
+    l = create_link url: 'https://facebook.com/749262715138323/posts/994636317267627'
+    l.check404
+    assert_equal 200, l.reload.status
+  end
+
+  test "should check that tweet is offline" do
+    l = create_link url: 'https://twitter.com/statuses/642613929693175809'
+    l.check404
+    assert_equal 404, l.reload.status
+  end
+
+  test "should check that tweet is online" do
+    l = create_link url: 'https://twitter.com/statuses/642147950081130496'
+    l.check404
+    assert_equal 200, l.reload.status
   end
 end

@@ -12,13 +12,13 @@ module LinkCheckers
   end
 
   def check404
-    uri = URI.parse(self.url).normalize
     code = 0
     begin
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = uri.scheme == 'https'
-      result = http.get(uri.path)
-      code = result.code.to_i
+      response = get_http_response_for(self.url)
+      code = response.code.to_i
+      if code === 301 || code === 302
+        code = get_http_response_for(response.header['location']).code.to_i
+      end
     rescue SocketError
       code = 404
     end
@@ -89,6 +89,14 @@ module LinkCheckers
     self.data
   end
 
+  def get_http_response_for(url)
+    uri = URI.parse(url).normalize
+    agent = { 'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36' }
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = uri.scheme == 'https'
+    http.get(uri.path, agent)
+  end
+
   private
 
   def generate_google_access_token
@@ -123,7 +131,7 @@ module LinkCheckers
 
   def get_shares_and_likes_from_facebook
     graph = Koala::Facebook::API.new(get_config('settings')['facebook_auth_token'])
-    object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\//, ''), fields: 'likes.summary(true),shares.summary(true)')
+    object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\/([0-9]+)\/posts\/([0-9]+).*/, '\2_\3'), fields: 'likes.summary(true),shares.summary(true)')
     { 'likes' => object['likes']['summary']['total_count'], 'shares' => object['shares']['count'] }
   end
 
