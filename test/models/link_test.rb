@@ -357,4 +357,33 @@ class LinkTest < ActiveSupport::TestCase
     resp = link.check_twitter_numbers_from_html
     assert !resp
   end
+
+  test "should not create link from invalid application" do
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link application: 'invalid'
+      end
+    end 
+  end
+
+  test "should not create link without application" do
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link application: nil
+      end
+    end 
+  end
+
+  test "should not create same link under same application" do
+    assert_difference 'Link.count' do
+      create_link url: 'http://test.com'
+    end
+    assert_no_difference 'Link.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_link url: 'http://test.com'
+      end
+    end
+  end
+
+  test "should destroy all links when a job is destroyed"
 end

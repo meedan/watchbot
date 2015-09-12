@@ -32,6 +32,6 @@ class ApiKeyTest < ActiveSupport::TestCase
       assert_raises Mongoid::Errors::Validations do
         create_api_key application: nil
       end
-    end  
+    end 
   end
 end
