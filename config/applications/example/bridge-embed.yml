@@ -4,6 +4,7 @@ webhook:
   #   link: original link for which condition was met,
   #   condition: the name of the condition that was verified,
   #   timestamp: the time at which the condition was verified
+  #   data: an object with any information returned by the checker
   # }
   # 
   # The HTTP header X-Signature is set to a hash signature of the post body. 

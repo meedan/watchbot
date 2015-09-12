@@ -59,7 +59,7 @@ The example client webhook can be run by: `SECRET_TOKEN=mysecrettoken ruby scrip
 When notified, it will print something like this on its log:
 
 ```
-JSON received: {"link"=>"http://link.link", "condition"=>{}, "timestamp"=>1427390618, "payload"=>{}}
+JSON received: {"link"=>"http://link.link", "condition"=>{}, "timestamp"=>1427390618, "data"=>{}}
 127.0.0.1 - - [26/Mar/2015 14:23:38] "POST /payload HTTP/1.1" 200 - 0.0075
 ```
 
@@ -80,6 +80,7 @@ webhook:
   #   link: original link for which condition was met,
   #   condition: the name of the condition that was verified,
   #   timestamp: the time at which the condition was verified
+  #   data: an object with any information returned by the checker
   # }
   # 
   # The HTTP header X-Watchbot-Signature is set to a hash signature of the post body. 
