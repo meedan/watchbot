@@ -384,6 +384,4 @@ class LinkTest < ActiveSupport::TestCase
       end
     end
   end
-
-  test "should destroy all links when a job is destroyed"
 end
