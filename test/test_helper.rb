@@ -14,21 +14,22 @@ class ActiveSupport::TestCase
   end
 
   def create_link(options = {})
-    link = Link.create!({ url: random_url, status: 100 }.merge(options))
+    link = Link.create!({ url: random_url, status: 100, application: 'test' }.merge(options))
     link.created_at = options[:created_at] if options.has_key?(:created_at)
     link.save!
     link.reload
   end
 
-  def create_api_key
-    ApiKey.create! 
+  def create_api_key(options = {})
+    ApiKey.create!({ application: 'test' }.merge(options))
   end
 
   def stubs_config(overwrite = {})
-    config = WATCHBOT_CONFIG.clone
-    config.each do |key, value|
-      value = overwrite.has_key?(key) ? overwrite[key] : value
-      WATCHBOT_CONFIG.stubs(:[]).with(key).returns(value)
+    WATCHBOT_CONFIG['test'].each do |key, value|
+      Link.any_instance.stubs(:get_config).with(key).returns(value)
+    end
+    overwrite.each do |key, value|
+      Link.any_instance.stubs(:get_config).with(key).returns(value)
     end
   end
 

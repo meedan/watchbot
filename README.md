@@ -39,7 +39,7 @@ This checker verifies the number of favorites (likes) and retweets (shares) of a
 
 In order to write a new checker, you just need to:
 
-1. Add the new condition to the `conditions` property on `config/watchbot.yml`
+1. Add the new condition to the `conditions` property in your configuration file
 2. Write a new method with your condition name under the module `LinkCheckers` (this method should return `false` in order to not notify the client or any other thing, which will be notified to the client, and can write/read link data on its `data` attribute, which is a hash)
 
 ### How to communicate with the Watchbot
@@ -59,7 +59,7 @@ The example client webhook can be run by: `SECRET_TOKEN=mysecrettoken ruby scrip
 When notified, it will print something like this on its log:
 
 ```
-JSON received: {"link"=>"http://link.link", "condition"=>{}, "timestamp"=>1427390618}
+JSON received: {"link"=>"http://link.link", "condition"=>{}, "timestamp"=>1427390618, "payload"=>{}}
 127.0.0.1 - - [26/Mar/2015 14:23:38] "POST /payload HTTP/1.1" 200 - 0.0075
 ```
 
@@ -71,7 +71,7 @@ In case of an invalid secret token, it will just return an error 500:
 
 ### Configuration
 
-The Watchbot is configured with the following options (at `config/watchbot.yml`):
+The Watchbot is configured with the following options (at `config/applications/<environment>/application.yml`):
 
 ```yaml
 webhook:
@@ -122,7 +122,7 @@ settings:
 
 * Copy `config/mongoid.yml.example` to `config/mongoid.yml` and configure your database
 * Copy `config/initializers/errbit.rb.example` to `config/initializers/errbit.rb` and configure Errbit
-* Copy `config/watchbot.yml.example` to `config/watchbot.yml` and configure your application
+* Create the applications on `config/applications/<environment>` (check examples under `config/applications/example`)
 * Create delayed job indexes by running: `rails runner 'Delayed::Backend::Mongoid::Job.create_indexes'`
 * Install the gems: `bundle install`
 * Start the server
@@ -132,7 +132,7 @@ settings:
 There are some rake tasks to perform administrative actions. For example:
 
 * `rake watchbot:api_keys:delete_expired`: Remove expired keys from the database
-* `rake watchbot:api_keys:create`: Create a new API key
+* `rake watchbot:api_keys:create application=<application name>`: Create a new API key for the application
 
 ### Automated tests
 

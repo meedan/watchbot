@@ -101,12 +101,12 @@ module LinkCheckers
       :application_version => '1.0.0'
     )
     
-    key = Google::APIClient::KeyUtils.load_from_pkcs12(WATCHBOT_CONFIG['settings']['google_pkcs12_path'], WATCHBOT_CONFIG['settings']['google_pkcs12_secret'])
+    key = Google::APIClient::KeyUtils.load_from_pkcs12(get_config('settings')['google_pkcs12_path'], get_config('settings')['google_pkcs12_secret'])
     client.authorization = Signet::OAuth2::Client.new(
       :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
       :audience => 'https://accounts.google.com/o/oauth2/token',
       :scope => ['https://www.googleapis.com/auth/drive', 'https://spreadsheets.google.com/feeds/'],
-      :issuer => WATCHBOT_CONFIG['settings']['google_issuer'],
+      :issuer => get_config('settings')['google_issuer'],
       :signing_key => key)
     client.authorization.fetch_access_token!
     client.authorization.access_token
@@ -114,15 +114,15 @@ module LinkCheckers
 
   def connect_to_twitter
     Twitter::REST::Client.new do |config|
-      config.consumer_key        = WATCHBOT_CONFIG['settings']['twitter_consumer_key']
-      config.consumer_secret     = WATCHBOT_CONFIG['settings']['twitter_consumer_secret']
-      config.access_token        = WATCHBOT_CONFIG['settings']['twitter_access_token']
-      config.access_token_secret = WATCHBOT_CONFIG['settings']['twitter_access_token_secret']
+      config.consumer_key        = get_config('settings')['twitter_consumer_key']
+      config.consumer_secret     = get_config('settings')['twitter_consumer_secret']
+      config.access_token        = get_config('settings')['twitter_access_token']
+      config.access_token_secret = get_config('settings')['twitter_access_token_secret']
     end
   end
 
   def get_shares_and_likes_from_facebook
-    graph = Koala::Facebook::API.new(WATCHBOT_CONFIG['settings']['facebook_auth_token'])
+    graph = Koala::Facebook::API.new(get_config('settings')['facebook_auth_token'])
     object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\//, ''), fields: 'likes.summary(true),shares.summary(true)')
     { 'likes' => object['likes']['summary']['total_count'], 'shares' => object['shares']['count'] }
   end

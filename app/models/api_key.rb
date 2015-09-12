@@ -4,9 +4,11 @@ class ApiKey
   
   field :access_token, type: String
   field :expire_at, type: DateTime
+  field :application, type: String
 
   validates_presence_of :access_token, :expire_at
   validates_uniqueness_of :access_token
+  validates :application, presence: true, inclusion: { in: WATCHBOT_CONFIG.keys }
 
   before_validation :generate_access_token, on: :create
   before_validation :calculate_expiration_date, on: :create

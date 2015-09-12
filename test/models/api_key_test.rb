@@ -19,4 +19,19 @@ class ApiKeyTest < ActiveSupport::TestCase
     assert_kind_of String, k.reload.access_token
   end
 
+  test "should not create API key with invalid application" do
+    assert_no_difference 'ApiKey.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_api_key application: 'invalid'
+      end
+    end  
+  end
+
+  test "should not create API key without application" do
+    assert_no_difference 'ApiKey.count' do
+      assert_raises Mongoid::Errors::Validations do
+        create_api_key application: nil
+      end
+    end  
+  end
 end

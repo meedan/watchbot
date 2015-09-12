@@ -21,9 +21,11 @@ db/schema.rb
 
 # Ignore configuration files
 config/mongoid.yml
-config/watchbot.yml
 config/initializers/errbit.rb
 config/initializers/secret_token.rb
+config/applications/test
+config/applications/development
+config/applications/production
 
 # Ignore Vim files
 *.sw*
