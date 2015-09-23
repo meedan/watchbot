@@ -103,32 +103,32 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that URL is offline if domain is invalid" do
     link = create_link url: 'http://thisisnotonline.com'
     assert link.check404
-    assert_equal 404, link.reload.status
+    assert_equal 404, link.status
   end
 
   test "should check that URL is offline" do
     link = create_link url: 'http://meedan.org/404'
     assert link.check404
-    assert_equal 404, link.reload.status
+    assert_equal 404, link.status
   end
 
   test "should check that URL is offline if forbidden" do
     Net::HTTPNotFound.any_instance.stubs(:code).returns(403)
     link = create_link url: 'http://meedan.org/403'
     assert link.check404
-    assert_equal 403, link.reload.status
+    assert_equal 403, link.status
   end
 
   test "should check that URL is online" do
     link = create_link url: 'http://www.google.com'
     assert !link.check404
-    assert_equal 200, link.reload.status
+    assert_equal 302, link.status
   end
 
   test "should check that HTTPS URL is online" do
     link = create_link url: 'https://www.google.com'
     assert !link.check404
-    assert_equal 200, link.reload.status
+    assert_equal 200, link.status
   end
 
   test "should have status" do
@@ -136,7 +136,7 @@ class LinkTest < ActiveSupport::TestCase
     assert_kind_of Integer, link.status
     link.status = 200
     link.save!
-    assert_equal 200, link.reload.status
+    assert_equal 200, link.status
   end
 
   test "should only accept numbers for status" do
@@ -190,7 +190,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should not notify if condition is not verified" do
-    Link.any_instance.expects(:notify).never
+    Link.any_instance.expects(:notify).once
     link = create_link url: 'https://twitter.com/caiosba/status/539790133219053568'
     link.check
   end
@@ -297,7 +297,7 @@ class LinkTest < ActiveSupport::TestCase
     resp = link.check_facebook_numbers
     assert_equal 2, resp['likes']
     assert_equal 1, resp['shares']
-    assert_equal resp, link.reload.data
+    assert_equal resp, link.data
   end
 
   test "should return false if number of likes and shares from Facebook link did not change" do
@@ -319,7 +319,7 @@ class LinkTest < ActiveSupport::TestCase
     resp = link.check_twitter_numbers_from_api
     assert_equal 3, resp['shares']
     assert_equal 4, resp['likes']
-    assert_equal resp, link.reload.data
+    assert_equal resp, link.data
   end
 
   test "should return false if number of likes and shares from Twitter link from API did not change" do
@@ -341,7 +341,7 @@ class LinkTest < ActiveSupport::TestCase
     resp = link.check_twitter_numbers_from_html
     assert_equal 3, resp['shares']
     assert_equal 4, resp['likes']
-    assert_equal resp, link.reload.data
+    assert_equal resp, link.data
   end
 
   test "should return false if number of likes and shares from Twitter link from HTML did not change" do
@@ -388,24 +388,78 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that Facebook post is offline" do
     l = create_link url: 'https://facebook.com/749262715138323/posts/996333003764625'
     l.check404
-    assert_equal 404, l.reload.status
+    assert_equal 404, l.status
   end
 
   test "should check that Facebook post is online" do
     l = create_link url: 'https://facebook.com/749262715138323/posts/994636317267627'
     l.check404
-    assert_equal 200, l.reload.status
+    assert_equal 200, l.status
   end
 
   test "should check that tweet is offline" do
     l = create_link url: 'https://twitter.com/statuses/642613929693175809'
     l.check404
-    assert_equal 404, l.reload.status
+    assert_equal 404, l.status
   end
 
   test "should check that tweet is online" do
     l = create_link url: 'https://twitter.com/statuses/642147950081130496'
     l.check404
-    assert_equal 200, l.reload.status
+    assert_equal 200, l.status
+  end
+
+  test "should free memory for queue" do
+    Delayed::Worker.stubs(:delay_jobs).returns(true)
+    
+    l = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    ['622171340808675328','645980754044919808','645976546889625600','645954705680691200','645948545833541632'].each do |id|
+      create_link url: "https://twitter.com/statuses/#{id}"
+    end
+    GC.start
+    before = ObjectSpace.each_object.count
+
+    worker = Delayed::Worker.new
+    Delayed::Job.all.each do |job|
+      worker.run(job)
+    end
+    
+    after = ObjectSpace.each_object.count
+    
+    assert_equal 2, l.reload.data['shares']
+    assert_equal 1, l.reload.data['likes']
+    
+    Delayed::Worker.stubs(:delay_jobs).returns(false)
+    
+    puts 'Number of objects in memory after checking six links: ' + (after - before).to_s
+  end
+
+  test "should free memory for single job" do
+    l1 = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l2 = create_link url: 'https://twitter.com/statuses/622171340808675328'
+    GC.start
+    before = ObjectSpace.each_object.count
+
+    l1.check
+    GC.start
+
+    after = ObjectSpace.each_object.count
+    
+    puts 'Number of objects in memory after checking one link: ' + (after - before).to_s
+  end
+
+  test "should free memory for two jobs" do
+    l1 = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l2 = create_link url: 'https://twitter.com/statuses/622171340808675328'
+    GC.start
+    before = ObjectSpace.each_object.count
+
+    l1.check
+    l2.check
+    GC.start
+
+    after = ObjectSpace.each_object.count
+    
+    puts 'Number of objects in memory after checking two links: ' + (after - before).to_s
   end
 end

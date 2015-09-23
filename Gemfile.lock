@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/mongoid/mongoid.git
-  revision: 8f22ade5fda84626e888fd9a4c80dc10e37616b4
-  specs:
-    mongoid (4.0.2)
-      activemodel (~> 4.0)
-      moped (~> 2.0.0)
-      origin (~> 2.1)
-      tzinfo (>= 0.3.37)
-
-GIT
   remote: https://github.com/meedan/delayed_cron_job
   revision: d340533f807fb6b706efb6a8c9bd040f218fb52a
   ref: d340533
@@ -53,14 +43,15 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    bson (2.3.0)
+    bson (3.2.4)
     buftok (0.2.0)
     builder (3.1.4)
     codeclimate-test-reporter (0.4.4)
       simplecov (>= 0.7.1, < 1.0.0)
-    connection_pool (2.1.2)
+    connection_pool (2.2.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    daemons (1.2.3)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
     delayed_job_mongoid (2.1.0)
@@ -124,8 +115,13 @@ GEM
     minitest (4.7.5)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
-    moped (2.0.4)
-      bson (~> 2.2)
+    mongoid (4.0.2)
+      activemodel (~> 4.0)
+      moped (~> 2.0.0)
+      origin (~> 2.1)
+      tzinfo (>= 0.3.37)
+    moped (2.0.7)
+      bson (~> 3.0)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)
     multi_json (1.11.0)
@@ -221,12 +217,13 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   codeclimate-test-reporter
+  daemons
   delayed_cron_job!
   delayed_job_mongoid
   google_drive (= 1.0.1)
   koala
   mocha
-  mongoid (~> 4)!
+  mongoid
   rails (= 4.0.9)
   retryable
   sdoc

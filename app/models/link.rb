@@ -32,7 +32,7 @@ class Link
 
   def check
     get_config('conditions').each do |condition|
-      if !self.deleted? && self.url =~ Regexp.new(condition['linkRegex'])
+      if !self.deleted? && self.match_condition(condition)
         name = condition['condition']
         output = send(name)
         if output 
@@ -41,6 +41,11 @@ class Link
         end
       end
     end
+    self.save unless self.deleted?
+  end
+
+  def match_condition(condition)
+    self.url =~ Regexp.new(condition['linkRegex'])
   end
 
   def notification_signature(payload)

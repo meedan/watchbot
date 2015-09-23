@@ -8,7 +8,7 @@ require 'webmock/test_unit'
 class ActiveSupport::TestCase
 
   def setup
-    WebMock.disable_net_connect! allow: ['codeclimate.com', /^http:\/\/test\./, /meedan/, 'thisisnotonline.com', 'www.google.com',
+    WebMock.disable_net_connect! allow: ['codeclimate.com', /^http:\/\/test\./, /meedan/, 'thisisnotonline.com', /www\.google\.com/,
                                          'graph.facebook.com', 'twitter.com', 'docs.google.com', 'spreadsheets.google.com',
                                          'accounts.google.com', 'www.googleapis.com', 'api.twitter.com', /facebook\.com/]
     WebMock.stub_request(:post, 'http://localhost:4567/payload')

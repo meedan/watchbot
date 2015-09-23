@@ -10,4 +10,8 @@ class WatchJob < Struct.new(:link)
   def calculate_cron(job)
     link.calculate_cron unless link.nil?
   end
+
+  def after
+    GC.start
+  end
 end

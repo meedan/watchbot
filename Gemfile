@@ -3,7 +3,7 @@ gem 'rails', '4.0.9'
 group :doc do
   gem 'sdoc', require: false
 end
-gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
+gem 'mongoid'
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'airbrake'
 gem 'validate_url'
@@ -15,3 +15,4 @@ gem 'google_drive', '1.0.1'
 gem 'retryable'
 gem 'koala'
 gem 'twitter'
+gem 'daemons'

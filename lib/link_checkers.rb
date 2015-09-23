@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'nokogiri'
+
 module LinkCheckers
   def check_facebook_numbers
     get_shares_and_likes(:get_shares_and_likes_from_facebook)
@@ -22,7 +25,7 @@ module LinkCheckers
     rescue SocketError
       code = 404
     end
-    self.update_attributes(status: code) if code != self.status
+    self.status = code
     code / 100 === 4
   end
 
@@ -39,7 +42,6 @@ module LinkCheckers
     # If something changed during that time it's because someone is still editing - so, we don't want to notify
     if before === after
       self.data['hash'] = after
-      self.save!
       return true
     else
       return false
@@ -85,7 +87,6 @@ module LinkCheckers
       return false
     end
     self.data = { 'likes' => likes, 'shares' => shares }
-    self.save!
     self.data
   end
 
@@ -148,14 +149,16 @@ module LinkCheckers
 
   # grok: key => CSS selector
   def parse_html(groks = {})
-    require 'open-uri'
-    require 'nokogiri'
-    html = open(self.url)
+    html = ''
+    open(self.url) do |f|
+      html = f.read
+    end
     doc = Nokogiri::HTML(html)
     resp = {}
     groks.each do |key, css|
       resp[key] = doc.css(css).inner_html
     end
+    doc = nil
     resp
   end
 end
