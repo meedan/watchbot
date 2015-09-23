@@ -1,4 +1,5 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), '..', 'test_helper')
+require 'watchbot_memory'
 
 class LinkTest < ActiveSupport::TestCase
 
@@ -407,59 +408,5 @@ class LinkTest < ActiveSupport::TestCase
     l = create_link url: 'https://twitter.com/statuses/642147950081130496'
     l.check404
     assert_equal 200, l.status
-  end
-
-  test "should free memory for queue" do
-    Delayed::Worker.stubs(:delay_jobs).returns(true)
-    
-    l = create_link url: 'https://twitter.com/statuses/613227868726804481'
-    ['622171340808675328','645980754044919808','645976546889625600','645954705680691200','645948545833541632'].each do |id|
-      create_link url: "https://twitter.com/statuses/#{id}"
-    end
-    GC.start
-    before = ObjectSpace.each_object.count
-
-    worker = Delayed::Worker.new
-    Delayed::Job.all.each do |job|
-      worker.run(job)
-    end
-    
-    after = ObjectSpace.each_object.count
-    
-    assert_equal 2, l.reload.data['shares']
-    assert_equal 1, l.reload.data['likes']
-    
-    Delayed::Worker.stubs(:delay_jobs).returns(false)
-    
-    puts 'Number of objects in memory after checking six links: ' + (after - before).to_s
-  end
-
-  test "should free memory for single job" do
-    l1 = create_link url: 'https://twitter.com/statuses/613227868726804481'
-    l2 = create_link url: 'https://twitter.com/statuses/622171340808675328'
-    GC.start
-    before = ObjectSpace.each_object.count
-
-    l1.check
-    GC.start
-
-    after = ObjectSpace.each_object.count
-    
-    puts 'Number of objects in memory after checking one link: ' + (after - before).to_s
-  end
-
-  test "should free memory for two jobs" do
-    l1 = create_link url: 'https://twitter.com/statuses/613227868726804481'
-    l2 = create_link url: 'https://twitter.com/statuses/622171340808675328'
-    GC.start
-    before = ObjectSpace.each_object.count
-
-    l1.check
-    l2.check
-    GC.start
-
-    after = ObjectSpace.each_object.count
-    
-    puts 'Number of objects in memory after checking two links: ' + (after - before).to_s
   end
 end

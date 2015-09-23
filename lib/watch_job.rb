@@ -12,6 +12,7 @@ class WatchJob < Struct.new(:link)
   end
 
   def after
-    GC.start
+    cmd = 'cd ' + Rails.root + ' && RAILS_ENV=production bin/delayed_job -n5 stop && RAILS_ENV=production bin/delayed_job -n5 start'
+    system(cmd) if Rails.env.production? && Watchbot::Memory.value.size >= 10
   end
 end
