@@ -409,4 +409,42 @@ class LinkTest < ActiveSupport::TestCase
     l.check404
     assert_equal 200, l.status
   end
+
+  test "should run jobs using delayed job" do
+    l = nil
+    with_delayed_job_enabled do
+      l = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    end
+    assert_equal 2, l.reload.data['shares']
+    assert_equal 1, l.reload.data['likes']
+  end
+
+  test "should restart delayed job if memory is exhausted and environment is production" do
+    Watchbot::Memory.stubs(:value).returns(1000000001)
+    Rails.stubs(:env).returns('production')
+    Kernel.expects(:system).returns(true).once
+    
+    with_delayed_job_enabled do
+      create_link url: 'https://twitter.com/statuses/613227868726804481'
+    end
+  end
+
+  test "should not restart delayed job if memory is not exhausted" do
+    Watchbot::Memory.stubs(:value).returns(999999999)
+    Rails.stubs(:env).returns('production')
+    Kernel.expects(:system).never
+    
+    with_delayed_job_enabled do
+      create_link url: 'https://twitter.com/statuses/613227868726804481'
+    end
+  end
+
+  test "should not restart delayed job if environment is not production" do
+    Watchbot::Memory.stubs(:value).returns(1000000001)
+    Kernel.expects(:system).never
+    
+    with_delayed_job_enabled do
+      create_link url: 'https://twitter.com/statuses/613227868726804481'
+    end
+  end
 end

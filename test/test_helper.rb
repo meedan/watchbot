@@ -39,6 +39,16 @@ class ActiveSupport::TestCase
     request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(api_key.access_token)
   end
 
+  def with_delayed_job_enabled(&block)
+    Delayed::Worker.stubs(:delay_jobs).returns(true)
+    yield
+    worker = Delayed::Worker.new
+    Delayed::Job.all.each do |job|
+      worker.run(job)
+    end
+    Delayed::Worker.stubs(:delay_jobs).returns(false)
+  end
+
   private
 
   def random_string(length = 10)
