@@ -18,7 +18,7 @@ class WatchJob < Struct.new(:link)
     memory = Watchbot::Memory.value
     limit = ENV['WATCHBOT_DELAYED_JOB_MEMORY_LIMIT'] || 1000000000
     if Rails.env === 'production' && memory >= limit.to_i
-      Delayed::Worker.logger.debug("Reached #{memory} bytes of memory, restarting...")
+      Delayed::Worker.logger.warn("Reached #{memory} bytes of memory, restarting...")
       Kernel.system(cmd)
     end
   end
