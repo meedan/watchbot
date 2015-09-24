@@ -14,7 +14,7 @@ class WatchJob < Struct.new(:link)
   end
 
   def after
-    cmd = 'cd ' + Rails.root.to_s + ' && RAILS_ENV=production bin/delayed_job -n5 stop && RAILS_ENV=production bin/delayed_job -n5 start'
+    cmd = 'cd ' + Rails.root.to_s + ' && RAILS_ENV=production bin/delayed_job stop && RAILS_ENV=production bin/delayed_job start'
     memory = Watchbot::Memory.value
     limit = ENV['WATCHBOT_DELAYED_JOB_MEMORY_LIMIT'] || 1000000000
     if Rails.env === 'production' && memory >= limit.to_i
