@@ -462,7 +462,9 @@ class LinkTest < ActiveSupport::TestCase
     Rails.stubs(:env).returns('production')
     Kernel.expects(:system).returns(true).once
     
-    create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l.job.enque!
+    WatchJob.drain
 
     Watchbot::Memory.unstub(:value)
     Rails.unstub(:env)
@@ -474,7 +476,9 @@ class LinkTest < ActiveSupport::TestCase
     Rails.stubs(:env).returns('production')
     Kernel.expects(:system).never
     
-    create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l.job.enque!
+    WatchJob.drain
 
     Watchbot::Memory.unstub(:value)
     Rails.unstub(:env)
@@ -485,11 +489,31 @@ class LinkTest < ActiveSupport::TestCase
     Watchbot::Memory.stubs(:value).returns(1000000001)
     Kernel.expects(:system).never
     
-    create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l = create_link url: 'https://twitter.com/statuses/613227868726804481'
+    l.job.enque!
+    WatchJob.drain
 
     Watchbot::Memory.unstub(:value)
     Rails.unstub(:env)
     Kernel.unstub(:system)
+  end
+
+  test "should restart checker when periodicity changes" do
+    Time.stubs(:now).returns(Time.parse('2015-01-02 09:00:00'))
+    t = Time.parse('2015-01-01 09:00:00')
+    link = create_link created_at: t
+    job = link.job
+
+    t = Time.parse('2015-01-02 09:06:00')
+    assert_equal Time.parse('2015-01-02 09:05:00'), link.reload.job.last_time(t)
+
+    Time.stubs(:now).returns(Time.parse('2015-01-05 09:00:00'))
+    t = Time.parse('2015-01-05 09:30:00')
+    job.enque!
+    WatchJob.drain
+    assert_equal Time.parse('2015-01-05 09:00:00'), link.reload.job.last_time(t)
+
+    Time.unstub(:now)
   end
 
   def teardown

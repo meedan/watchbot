@@ -21,11 +21,11 @@
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.83%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         15.23
+         16.72
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>7</b> files in total.
     <b>257</b> relevant lines. 
-    <span class="green"><b>254</b> lines covered</span> and
-    <span class="red"><b>3</b> lines missed </span>
+    <span class="green"><b>257</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -87,7 +87,7 @@
         <td>73</td>
         <td>73</td>
         <td>0</td>
-        <td>28.9</td>
+        <td>31.8</td>
       </tr>
       
       <tr>
@@ -97,17 +97,17 @@
         <td>102</td>
         <td>102</td>
         <td>0</td>
-        <td>13.0</td>
+        <td>14.2</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#0b859dd52bdf5c795297ee20e97909026cc75e74" class="src_link" title="lib/watch_job.rb">lib/watch_job.rb</a></td>
-        <td class="yellow strong">88.0 %</td>
+        <td class="green strong">100.0 %</td>
         <td>30</td>
         <td>25</td>
-        <td>22</td>
-        <td>3</td>
-        <td>7.6</td>
+        <td>25</td>
+        <td>0</td>
+        <td>9.5</td>
       </tr>
       
       <tr>
@@ -117,7 +117,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>4.4</td>
+        <td>4.8</td>
       </tr>
       
     </tbody>
@@ -190,7 +190,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         24.61
+         26.96
        </span>
     </span> hits/line)
   </h2>
@@ -232,7 +232,7 @@
         <td>73</td>
         <td>73</td>
         <td>0</td>
-        <td>28.9</td>
+        <td>31.8</td>
       </tr>
       
     </tbody>
@@ -317,11 +317,11 @@
           <div class="file_list_container" id="Libraries">
   <h2>
     <span class="group_name">Libraries</span>
-    (<span class="covered_percent"><span class="green">97.73%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         11.65
+         12.95
        </span>
     </span> hits/line)
   </h2>
@@ -329,8 +329,8 @@
   <div>
     <b>3</b> files in total.
     <b>132</b> relevant lines. 
-    <span class="green"><b>129</b> lines covered</span> and
-    <span class="red"><b>3</b> lines missed </span>
+    <span class="green"><b>132</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -353,17 +353,17 @@
         <td>102</td>
         <td>102</td>
         <td>0</td>
-        <td>13.0</td>
+        <td>14.2</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#0b859dd52bdf5c795297ee20e97909026cc75e74" class="src_link" title="lib/watch_job.rb">lib/watch_job.rb</a></td>
-        <td class="yellow strong">88.0 %</td>
+        <td class="green strong">100.0 %</td>
         <td>30</td>
         <td>25</td>
-        <td>22</td>
-        <td>3</td>
-        <td>7.6</td>
+        <td>25</td>
+        <td>0</td>
+        <td>9.5</td>
       </tr>
       
       <tr>
@@ -373,7 +373,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>4.4</td>
+        <td>4.8</td>
       </tr>
       
     </tbody>
@@ -1209,26 +1209,26 @@
           <code class="ruby">  def calculate_cron</code>
         </li>
       
-        <li class="covered" data-hits="57" data-linenumber="24">
-          <span class="hits">57</span>
+        <li class="covered" data-hits="63" data-linenumber="24">
+          <span class="hits">63</span>
           
           <code class="ruby">    cron = nil</code>
         </li>
       
-        <li class="covered" data-hits="113" data-linenumber="25">
-          <span class="hits">113</span>
+        <li class="covered" data-hits="119" data-linenumber="25">
+          <span class="hits">119</span>
           
           <code class="ruby">    diff = (Time.now - self.created_at).to_i</code>
         </li>
       
-        <li class="covered" data-hits="113" data-linenumber="26">
-          <span class="hits">113</span>
+        <li class="covered" data-hits="119" data-linenumber="26">
+          <span class="hits">119</span>
           
           <code class="ruby">    get_config(&#39;schedule&#39;).each do |schedule|</code>
         </li>
       
-        <li class="covered" data-hits="221" data-linenumber="27">
-          <span class="hits">221</span>
+        <li class="covered" data-hits="239" data-linenumber="27">
+          <span class="hits">239</span>
           
           <code class="ruby">      cron = schedule[&#39;interval&#39;] if cron.nil? &amp;&amp; (schedule[&#39;to&#39;].blank? || diff &lt; schedule[&#39;to&#39;])</code>
         </li>
@@ -1239,8 +1239,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="56" data-linenumber="29">
-          <span class="hits">56</span>
+        <li class="covered" data-hits="62" data-linenumber="29">
+          <span class="hits">62</span>
           
           <code class="ruby">    cron</code>
         </li>
@@ -1263,44 +1263,44 @@
           <code class="ruby">  def check</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="33">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="12" data-linenumber="33">
+          <span class="hits">12</span>
           
           <code class="ruby">    get_config(&#39;conditions&#39;).each do |condition|</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="34">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="41" data-linenumber="34">
+          <span class="hits">41</span>
           
           <code class="ruby">      if !self.destroyed? &amp;&amp; self.match_condition(condition)</code>
         </li>
       
-        <li class="covered" data-hits="48" data-linenumber="35">
-          <span class="hits">48</span>
+        <li class="covered" data-hits="54" data-linenumber="35">
+          <span class="hits">54</span>
           
           <code class="ruby">        name = condition[&#39;condition&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="36">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="31" data-linenumber="36">
+          <span class="hits">31</span>
           
           <code class="ruby">        output = send(name)</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="37">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="31" data-linenumber="37">
+          <span class="hits">31</span>
           
           <code class="ruby">        if output </code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="38">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="24" data-linenumber="38">
+          <span class="hits">24</span>
           
           <code class="ruby">          notify(name, output)</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="39">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="17" data-linenumber="39">
+          <span class="hits">17</span>
           
           <code class="ruby">          self.destroy if condition[&#39;removeIfApplies&#39;]</code>
         </li>
@@ -1323,8 +1323,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="43">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="11" data-linenumber="43">
+          <span class="hits">11</span>
           
           <code class="ruby">    self.save unless self.destroyed?</code>
         </li>
@@ -1347,8 +1347,8 @@
           <code class="ruby">  def match_condition(condition)</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="47">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="27" data-linenumber="47">
+          <span class="hits">27</span>
           
           <code class="ruby">    self.url =~ Regexp.new(condition[&#39;linkRegex&#39;])</code>
         </li>
@@ -1371,8 +1371,8 @@
           <code class="ruby">  def notification_signature(payload)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="51">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="10" data-linenumber="51">
+          <span class="hits">10</span>
           
           <code class="ruby">    &#39;sha1=&#39; + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new(&#39;sha1&#39;), get_config(&#39;webhook&#39;)[&#39;secret_token&#39;], payload)</code>
         </li>
@@ -1395,56 +1395,56 @@
           <code class="ruby">  def notify(condition, data = {})</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="55">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="9" data-linenumber="55">
+          <span class="hits">9</span>
           
           <code class="ruby">    payload = { link: Rack::Utils.escape(self.url), condition: condition, timestamp: Time.now.to_i, data: data }.to_json</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="56">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="56">
+          <span class="hits">15</span>
           
           <code class="ruby">    uri = URI(get_config(&#39;webhook&#39;)[&#39;callback_url&#39;])</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="57">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="57">
+          <span class="hits">15</span>
           
           <code class="ruby">    http = Net::HTTP.new(uri.host, uri.port)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="58">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="58">
+          <span class="hits">15</span>
           
           <code class="ruby">    http.use_ssl = uri.scheme == &#39;https&#39;</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="59">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="59">
+          <span class="hits">15</span>
           
           <code class="ruby">    request = Net::HTTP::Post.new(uri.path)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="60">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="60">
+          <span class="hits">15</span>
           
           <code class="ruby">    request.body = payload</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="61">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="61">
+          <span class="hits">15</span>
           
           <code class="ruby">    request[&#39;X-Signature&#39;] = notification_signature(payload)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="62">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="62">
+          <span class="hits">15</span>
           
           <code class="ruby">    request[&#39;Content-Type&#39;] = &#39;application/json&#39;</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="63">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="15" data-linenumber="63">
+          <span class="hits">15</span>
           
           <code class="ruby">    http.request(request)</code>
         </li>
@@ -1467,8 +1467,8 @@
           <code class="ruby">  def job_name</code>
         </li>
       
-        <li class="covered" data-hits="126" data-linenumber="67">
-          <span class="hits">126</span>
+        <li class="covered" data-hits="144" data-linenumber="67">
+          <span class="hits">144</span>
           
           <code class="ruby">    &quot;link-#{self.id.to_s}-job&quot;</code>
         </li>
@@ -1491,8 +1491,8 @@
           <code class="ruby">  def job</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="71">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="35" data-linenumber="71">
+          <span class="hits">35</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.find name: self.job_name</code>
         </li>
@@ -1515,8 +1515,8 @@
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="107" data-linenumber="75">
-          <span class="hits">107</span>
+        <li class="covered" data-hits="109" data-linenumber="75">
+          <span class="hits">109</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: &#39;WatchJob&#39;, args: [self.id.to_s])</code>
         </li>
@@ -1539,14 +1539,14 @@
           <code class="ruby">  def restart_watching</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="79">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="79">
+          <span class="hits">98</span>
           
           <code class="ruby">    self.stop_watching</code>
         </li>
       
-        <li class="covered" data-hits="97" data-linenumber="80">
-          <span class="hits">97</span>
+        <li class="covered" data-hits="98" data-linenumber="80">
+          <span class="hits">98</span>
           
           <code class="ruby">    self.start_watching</code>
         </li>
@@ -1569,8 +1569,8 @@
           <code class="ruby">  def stop_watching</code>
         </li>
       
-        <li class="covered" data-hits="51" data-linenumber="84">
-          <span class="hits">51</span>
+        <li class="covered" data-hits="53" data-linenumber="84">
+          <span class="hits">53</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.destroy self.job_name</code>
         </li>
@@ -1605,20 +1605,20 @@
           <code class="ruby">  def get_config(key)</code>
         </li>
       
-        <li class="covered" data-hits="83" data-linenumber="90">
-          <span class="hits">83</span>
+        <li class="covered" data-hits="99" data-linenumber="90">
+          <span class="hits">99</span>
           
           <code class="ruby">    raise &quot;Application &#39;#{self.application}&#39; not found&quot; unless WATCHBOT_CONFIG.has_key?(self.application)</code>
         </li>
       
-        <li class="covered" data-hits="83" data-linenumber="91">
-          <span class="hits">83</span>
+        <li class="covered" data-hits="99" data-linenumber="91">
+          <span class="hits">99</span>
           
           <code class="ruby">    raise &quot;Configuration key &#39;#{key}&#39; not found&quot; unless WATCHBOT_CONFIG[self.application].has_key?(key)</code>
         </li>
       
-        <li class="covered" data-hits="83" data-linenumber="92">
-          <span class="hits">83</span>
+        <li class="covered" data-hits="99" data-linenumber="92">
+          <span class="hits">99</span>
           
           <code class="ruby">    WATCHBOT_CONFIG[self.application][key]</code>
         </li>
@@ -1731,8 +1731,8 @@
           <code class="ruby">  def check_twitter_numbers_from_html</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="14">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="20" data-linenumber="14">
+          <span class="hits">20</span>
           
           <code class="ruby">    get_shares_and_likes(:get_shares_and_likes_from_twitter_html)</code>
         </li>
@@ -1755,38 +1755,38 @@
           <code class="ruby">  def check404</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="18">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="18">
+          <span class="hits">35</span>
           
           <code class="ruby">    code = 0</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="19">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="19">
+          <span class="hits">35</span>
           
           <code class="ruby">    begin</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="20">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="20">
+          <span class="hits">35</span>
           
           <code class="ruby">      response = get_http_response_for(self.url)</code>
         </li>
       
-        <li class="covered" data-hits="30" data-linenumber="21">
-          <span class="hits">30</span>
+        <li class="covered" data-hits="33" data-linenumber="21">
+          <span class="hits">33</span>
           
           <code class="ruby">      code = response.code.to_i</code>
         </li>
       
-        <li class="covered" data-hits="30" data-linenumber="22">
-          <span class="hits">30</span>
+        <li class="covered" data-hits="33" data-linenumber="22">
+          <span class="hits">33</span>
           
           <code class="ruby">      if code === 301 || code === 302</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="23">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="18" data-linenumber="23">
+          <span class="hits">18</span>
           
           <code class="ruby">        code = get_http_response_for(response.header[&#39;location&#39;]).code.to_i</code>
         </li>
@@ -1815,14 +1815,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="28">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="28">
+          <span class="hits">35</span>
           
           <code class="ruby">    self.status = code</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="29">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="35" data-linenumber="29">
+          <span class="hits">35</span>
           
           <code class="ruby">    code / 100 === 4</code>
         </li>
@@ -2103,38 +2103,38 @@
           <code class="ruby">  def get_shares_and_likes(method)</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="76">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="36" data-linenumber="76">
+          <span class="hits">36</span>
           
           <code class="ruby">    likes = self.data[&#39;likes&#39;] || 0</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="77">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="36" data-linenumber="77">
+          <span class="hits">36</span>
           
           <code class="ruby">    shares = self.data[&#39;shares&#39;] || 0</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="78">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="36" data-linenumber="78">
+          <span class="hits">36</span>
           
           <code class="ruby">    begin</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="79">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="36" data-linenumber="79">
+          <span class="hits">36</span>
           
           <code class="ruby">      numbers = send(method)</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="80">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="28" data-linenumber="80">
+          <span class="hits">28</span>
           
           <code class="ruby">      likes = numbers[&#39;likes&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="81">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="28" data-linenumber="81">
+          <span class="hits">28</span>
           
           <code class="ruby">      shares = numbers[&#39;shares&#39;]</code>
         </li>
@@ -2163,8 +2163,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="86">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="28" data-linenumber="86">
+          <span class="hits">28</span>
           
           <code class="ruby">    if likes == self.data[&#39;likes&#39;] &amp;&amp; shares = self.data[&#39;shares&#39;]</code>
         </li>
@@ -2181,14 +2181,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="89">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="22" data-linenumber="89">
+          <span class="hits">22</span>
           
           <code class="ruby">    self.data = { &#39;likes&#39; =&gt; likes, &#39;shares&#39; =&gt; shares }</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="90">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="22" data-linenumber="90">
+          <span class="hits">22</span>
           
           <code class="ruby">    self.data</code>
         </li>
@@ -2211,32 +2211,32 @@
           <code class="ruby">  def get_http_response_for(url)</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="94">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="53" data-linenumber="94">
+          <span class="hits">53</span>
           
           <code class="ruby">    uri = URI.parse(url).normalize</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="95">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="53" data-linenumber="95">
+          <span class="hits">53</span>
           
           <code class="ruby">    agent = { &#39;User-Agent&#39; =&gt; &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="96">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="53" data-linenumber="96">
+          <span class="hits">53</span>
           
           <code class="ruby">    http = Net::HTTP.new(uri.host, uri.port)</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="97">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="53" data-linenumber="97">
+          <span class="hits">53</span>
           
           <code class="ruby">    http.use_ssl = uri.scheme == &#39;https&#39;</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="98">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="53" data-linenumber="98">
+          <span class="hits">53</span>
           
           <code class="ruby">    http.get(uri.path, agent)</code>
         </li>
@@ -2523,14 +2523,14 @@
           <code class="ruby">  def get_shares_and_likes_from_twitter_html</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="146">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="18" data-linenumber="146">
+          <span class="hits">18</span>
           
           <code class="ruby">    data = parse_html({ &#39;likes&#39; =&gt; &#39;.js-stat-favorites strong&#39;, &#39;shares&#39; =&gt; &#39;.js-stat-retweets strong&#39; })</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="147">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="147">
+          <span class="hits">16</span>
           
           <code class="ruby">    { &#39;likes&#39; =&gt; data[&#39;likes&#39;].to_i, &#39;shares&#39; =&gt; data[&#39;shares&#39;].to_i }</code>
         </li>
@@ -2559,20 +2559,20 @@
           <code class="ruby">  def parse_html(groks = {})</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="152">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="18" data-linenumber="152">
+          <span class="hits">18</span>
           
           <code class="ruby">    html = &#39;&#39;</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="153">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="18" data-linenumber="153">
+          <span class="hits">18</span>
           
           <code class="ruby">    open(self.url) do |f|</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="154">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="154">
+          <span class="hits">16</span>
           
           <code class="ruby">      html = f.read</code>
         </li>
@@ -2583,26 +2583,26 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="156">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="156">
+          <span class="hits">16</span>
           
           <code class="ruby">    doc = Nokogiri::HTML(html)</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="157">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="157">
+          <span class="hits">16</span>
           
           <code class="ruby">    resp = {}</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="158">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="158">
+          <span class="hits">16</span>
           
           <code class="ruby">    groks.each do |key, css|</code>
         </li>
       
-        <li class="covered" data-hits="26" data-linenumber="159">
-          <span class="hits">26</span>
+        <li class="covered" data-hits="32" data-linenumber="159">
+          <span class="hits">32</span>
           
           <code class="ruby">      resp[key] = doc.css(css).inner_html</code>
         </li>
@@ -2613,14 +2613,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="161">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="161">
+          <span class="hits">16</span>
           
           <code class="ruby">    doc = nil</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="162">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="16" data-linenumber="162">
+          <span class="hits">16</span>
           
           <code class="ruby">    resp</code>
         </li>
@@ -2644,11 +2644,11 @@
         <div class="source_table" id="0b859dd52bdf5c795297ee20e97909026cc75e74">
   <div class="header">
     <h3>lib/watch_job.rb</h3>
-    <h4><span class="yellow">88.0 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>25</b> relevant lines. 
-      <span class="green"><b>22</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <span class="green"><b>25</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -2691,32 +2691,32 @@
           <code class="ruby">  def perform(*args)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="7">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="7">
+          <span class="hits">6</span>
           
           <code class="ruby">    link = Link.where(id: args.first).last</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="8">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="7" data-linenumber="8">
+          <span class="hits">7</span>
           
           <code class="ruby">    unless link.nil?</code>
         </li>
       
-        <li class="covered" data-hits="55" data-linenumber="9">
-          <span class="hits">55</span>
+        <li class="covered" data-hits="59" data-linenumber="9">
+          <span class="hits">59</span>
           
           <code class="ruby">      link.check</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="10">
+          <span class="hits">6</span>
           
           <code class="ruby">      cron = link.calculate_cron</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="11">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="11">
+          <span class="hits">6</span>
           
           <code class="ruby">      if cron.nil?</code>
         </li>
@@ -2733,8 +2733,8 @@
           <code class="ruby">      elsif !link.job.nil? &amp;&amp; cron != link.job.cron</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="1" data-linenumber="14">
+          <span class="hits">1</span>
           
           <code class="ruby">        link.restart_watching</code>
         </li>
@@ -2751,8 +2751,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="17">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="15" data-linenumber="17">
+          <span class="hits">15</span>
           
           <code class="ruby">    self.after</code>
         </li>
@@ -2775,44 +2775,44 @@
           <code class="ruby">  def after</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="21">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="7" data-linenumber="21">
+          <span class="hits">7</span>
           
           <code class="ruby">    pid = Process.pid</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="22">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="7" data-linenumber="22">
+          <span class="hits">7</span>
           
           <code class="ruby">    cmd = &quot;kill -USR1 #{pid} &amp;&amp; kill -TERM #{pid} &amp;&amp; kill -9 #{pid} &amp;&amp; cd #{Rails.root} &amp;&amp; RAILS_ENV=production bundle exec sidekiq -d&quot;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="23">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="23">
+          <span class="hits">6</span>
           
           <code class="ruby">    memory = Watchbot::Memory.value</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="24">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="24">
+          <span class="hits">6</span>
           
           <code class="ruby">    limit = ENV[&#39;WATCHBOT_BG_JOB_MEMORY_LIMIT&#39;] || 1000000000</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="25">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="6" data-linenumber="25">
+          <span class="hits">6</span>
           
           <code class="ruby">    if Rails.env === &#39;production&#39; &amp;&amp; memory &gt;= limit.to_i</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="26">
-          
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
           
           <code class="ruby">      puts &quot;Reached #{memory} bytes of memory, restarting...&quot;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="27">
-          
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
           
           <code class="ruby">      Kernel.system(cmd)</code>
         </li>
@@ -2871,14 +2871,14 @@
           <code class="ruby">    def self.value</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="4">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="4">
+          <span class="hits">9</span>
           
           <code class="ruby">      output = `ps -eo rss,pid | grep #{Process.pid} | grep -v grep | awk &#39;{ print $1; }&#39;`</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="5">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="5">
+          <span class="hits">9</span>
           
           <code class="ruby">      output.chomp.to_i</code>
         </li>
