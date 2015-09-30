@@ -122,11 +122,12 @@ settings:
 ### Installation
 
 * Copy `config/mongoid.yml.example` to `config/mongoid.yml` and configure your database
+* Copy `config/sidekiq.yml.example` to `config/sidekiq.yml` and configure Sidekiq
 * Copy `config/initializers/errbit.rb.example` to `config/initializers/errbit.rb` and configure Errbit
 * Create the applications on `config/applications/<environment>` (check examples under `config/applications/example`)
-* Create delayed job indexes by running: `rails runner 'Delayed::Backend::Mongoid::Job.create_indexes'`
 * Install the gems: `bundle install`
 * Start the server
+* Start Sidekiq: `bundle exec sidekiq -d`
 
 ### Administrative tasks
 

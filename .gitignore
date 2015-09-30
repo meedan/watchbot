@@ -26,6 +26,7 @@ config/initializers/secret_token.rb
 config/applications/test
 config/applications/development
 config/applications/production
+config/sidekiq.yml
 
 # Ignore Vim files
 *.sw*

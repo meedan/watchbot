@@ -18,8 +18,7 @@ class Link
   validates :application, presence: true, inclusion: { in: WATCHBOT_CONFIG.keys }
 
   after_create :start_watching
-
-  belongs_to :delayed_job, autosave: true, validate: true, dependent: :destroy, class_name: 'Delayed::Job'
+  after_destroy :stop_watching
 
   def calculate_cron
     cron = nil
@@ -32,7 +31,7 @@ class Link
 
   def check
     get_config('conditions').each do |condition|
-      if !self.deleted? && self.match_condition(condition)
+      if !self.destroyed? && self.match_condition(condition)
         name = condition['condition']
         output = send(name)
         if output 
@@ -41,7 +40,7 @@ class Link
         end
       end
     end
-    self.save unless self.deleted?
+    self.save unless self.destroyed?
   end
 
   def match_condition(condition)
@@ -63,17 +62,32 @@ class Link
     request['Content-Type'] = 'application/json'
     http.request(request)
   end
+    
+  def job_name
+    "link-#{self.id.to_s}-job"
+  end
 
   def job
-    self.delayed_job
+    Sidekiq::Cron::Job.find name: self.job_name
   end
-
-  private
 
   def start_watching
-    self.delayed_job = Delayed::Job.enqueue(WatchJob.new(self), cron: :calculate_cron)
-    self.save!
+    unless Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: 'WatchJob', args: [self.id.to_s])
+      self.destroy!
+      raise 'Could not schedule job'
+    end
   end
+
+  def restart_watching
+    self.stop_watching
+    self.start_watching
+  end
+
+  def stop_watching
+    Sidekiq::Cron::Job.destroy self.job_name
+  end
+  
+  private
 
   def get_config(key)
     raise "Application '#{self.application}' not found" unless WATCHBOT_CONFIG.has_key?(self.application)

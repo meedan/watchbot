@@ -1,24 +1,29 @@
 require 'watchbot_memory'
 
-class WatchJob < Struct.new(:link)
-  def perform
-    link.check unless link.nil?
-  end
+class WatchJob
+  include Sidekiq::Worker
 
-  def queue_name
-    'watch_job'
-  end
-
-  def calculate_cron(job)
-    link.calculate_cron unless link.nil?
+  def perform(*args)
+    link = Link.where(id: args.first).last
+    unless link.nil?
+      link.check
+      cron = link.calculate_cron
+      if cron.nil?
+        link.stop_watching
+      elsif !link.job.nil? && cron != link.job.cron
+        link.restart_watching
+      end
+    end
+    self.after
   end
 
   def after
-    cmd = 'cd ' + Rails.root.to_s + ' && RAILS_ENV=production bin/delayed_job stop && RAILS_ENV=production bin/delayed_job start'
+    pid = Process.pid
+    cmd = "kill -USR1 #{pid} && kill -TERM #{pid} && kill -9 #{pid} && cd #{Rails.root} && RAILS_ENV=production bundle exec sidekiq -d"
     memory = Watchbot::Memory.value
-    limit = ENV['WATCHBOT_DELAYED_JOB_MEMORY_LIMIT'] || 1000000000
+    limit = ENV['WATCHBOT_BG_JOB_MEMORY_LIMIT'] || 1000000000
     if Rails.env === 'production' && memory >= limit.to_i
-      Delayed::Worker.logger.warn("Reached #{memory} bytes of memory, restarting...")
+      puts "Reached #{memory} bytes of memory, restarting..."
       Kernel.system(cmd)
     end
   end
