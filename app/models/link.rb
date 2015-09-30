@@ -72,10 +72,7 @@ class Link
   end
 
   def start_watching
-    unless Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: 'WatchJob', args: [self.id.to_s])
-      self.destroy!
-      raise 'Could not schedule job'
-    end
+    Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: 'WatchJob', args: [self.id.to_s])
   end
 
   def restart_watching

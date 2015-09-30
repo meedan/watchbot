@@ -3,15 +3,20 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'webmock/test_unit'
+require 'webmock'
+require 'sidekiq/testing'
+require 'mocha/test_unit'
 
 class ActiveSupport::TestCase
 
   def setup
+    Sidekiq::Testing.fake!
     WebMock.disable_net_connect! allow: ['codeclimate.com', /^http:\/\/test\./, /meedan/, 'thisisnotonline.com', /www\.google\.com/,
                                          'graph.facebook.com', 'twitter.com', 'docs.google.com', 'spreadsheets.google.com',
                                          'accounts.google.com', 'www.googleapis.com', 'api.twitter.com', /facebook\.com/]
     WebMock.stub_request(:post, 'http://localhost:4567/payload')
+    Sidekiq::Worker.clear_all
+    Sidekiq::Cron::Job.destroy_all!
   end
 
   def create_link(options = {})
@@ -37,16 +42,6 @@ class ActiveSupport::TestCase
   def authorize(api_key = nil)
     api_key ||= create_api_key
     request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(api_key.access_token)
-  end
-
-  def with_delayed_job_enabled(&block)
-    Delayed::Worker.stubs(:delay_jobs).returns(true)
-    yield
-    worker = Delayed::Worker.new
-    Delayed::Job.all.each do |job|
-      worker.run(job)
-    end
-    Delayed::Worker.stubs(:delay_jobs).returns(false)
   end
 
   private
