@@ -133,7 +133,9 @@ module LinkCheckers
   def get_shares_and_likes_from_facebook
     graph = Koala::Facebook::API.new(get_config('settings')['facebook_auth_token'])
     object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\/([0-9]+)\/posts\/([0-9]+).*/, '\2_\3'), fields: 'likes.summary(true),shares.summary(true)')
-    { 'likes' => object['likes']['summary']['total_count'], 'shares' => object['shares']['count'] }
+    likes = (object.has_key?('likes') && object['likes'].has_key?('summary')) ? object['likes']['summary']['total_count'].to_i : 0
+    shares = (object.has_key?('shares')) ? object['shares']['count'].to_i : 0
+    { 'likes' => likes, 'shares' => shares }
   end
 
   def get_shares_and_likes_from_twitter_api

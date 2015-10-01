@@ -516,6 +516,14 @@ class LinkTest < ActiveSupport::TestCase
     Time.unstub(:now)
   end
 
+  test "should get Facebook numbers for post without shares" do
+    link = create_link url: 'https://facebook.com/749262715138323/posts/1006215599443032'
+    resp = link.check_facebook_numbers
+    assert_equal 1, resp['likes']
+    assert_equal 0, resp['shares']
+    assert_equal resp, link.data
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end
