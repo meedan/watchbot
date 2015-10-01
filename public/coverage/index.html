@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         16.72
+         16.22
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>7</b> files in total.
-    <b>257</b> relevant lines. 
-    <span class="green"><b>257</b> lines covered</span> and
+    <b>267</b> relevant lines. 
+    <span class="green"><b>267</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -87,17 +87,17 @@
         <td>73</td>
         <td>73</td>
         <td>0</td>
-        <td>31.8</td>
+        <td>32.0</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>164</td>
-        <td>102</td>
-        <td>102</td>
+        <td>166</td>
+        <td>112</td>
+        <td>112</td>
         <td>0</td>
-        <td>14.2</td>
+        <td>13.1</td>
       </tr>
       
       <tr>
@@ -190,7 +190,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         26.96
+         27.13
        </span>
     </span> hits/line)
   </h2>
@@ -232,7 +232,7 @@
         <td>73</td>
         <td>73</td>
         <td>0</td>
-        <td>31.8</td>
+        <td>32.0</td>
       </tr>
       
     </tbody>
@@ -321,15 +321,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         12.95
+         12.17
        </span>
     </span> hits/line)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>3</b> files in total.
-    <b>132</b> relevant lines. 
-    <span class="green"><b>132</b> lines covered</span> and
+    <b>142</b> relevant lines. 
+    <span class="green"><b>142</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -349,11 +349,11 @@
       <tr>
         <td class="strong"><a href="#8ffc4fb7c614ad082bfc6e564143911a40bb4369" class="src_link" title="lib/link_checkers.rb">lib/link_checkers.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>164</td>
-        <td>102</td>
-        <td>102</td>
+        <td>166</td>
+        <td>112</td>
+        <td>112</td>
         <td>0</td>
-        <td>14.2</td>
+        <td>13.1</td>
       </tr>
       
       <tr>
@@ -1209,26 +1209,26 @@
           <code class="ruby">  def calculate_cron</code>
         </li>
       
-        <li class="covered" data-hits="63" data-linenumber="24">
-          <span class="hits">63</span>
+        <li class="covered" data-hits="64" data-linenumber="24">
+          <span class="hits">64</span>
           
           <code class="ruby">    cron = nil</code>
         </li>
       
-        <li class="covered" data-hits="119" data-linenumber="25">
-          <span class="hits">119</span>
+        <li class="covered" data-hits="120" data-linenumber="25">
+          <span class="hits">120</span>
           
           <code class="ruby">    diff = (Time.now - self.created_at).to_i</code>
         </li>
       
-        <li class="covered" data-hits="119" data-linenumber="26">
-          <span class="hits">119</span>
+        <li class="covered" data-hits="120" data-linenumber="26">
+          <span class="hits">120</span>
           
           <code class="ruby">    get_config(&#39;schedule&#39;).each do |schedule|</code>
         </li>
       
-        <li class="covered" data-hits="239" data-linenumber="27">
-          <span class="hits">239</span>
+        <li class="covered" data-hits="242" data-linenumber="27">
+          <span class="hits">242</span>
           
           <code class="ruby">      cron = schedule[&#39;interval&#39;] if cron.nil? &amp;&amp; (schedule[&#39;to&#39;].blank? || diff &lt; schedule[&#39;to&#39;])</code>
         </li>
@@ -1239,8 +1239,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="29">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="63" data-linenumber="29">
+          <span class="hits">63</span>
           
           <code class="ruby">    cron</code>
         </li>
@@ -1467,8 +1467,8 @@
           <code class="ruby">  def job_name</code>
         </li>
       
-        <li class="covered" data-hits="144" data-linenumber="67">
-          <span class="hits">144</span>
+        <li class="covered" data-hits="146" data-linenumber="67">
+          <span class="hits">146</span>
           
           <code class="ruby">    &quot;link-#{self.id.to_s}-job&quot;</code>
         </li>
@@ -1515,8 +1515,8 @@
           <code class="ruby">  def start_watching</code>
         </li>
       
-        <li class="covered" data-hits="109" data-linenumber="75">
-          <span class="hits">109</span>
+        <li class="covered" data-hits="110" data-linenumber="75">
+          <span class="hits">110</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: &#39;WatchJob&#39;, args: [self.id.to_s])</code>
         </li>
@@ -1569,8 +1569,8 @@
           <code class="ruby">  def stop_watching</code>
         </li>
       
-        <li class="covered" data-hits="53" data-linenumber="84">
-          <span class="hits">53</span>
+        <li class="covered" data-hits="54" data-linenumber="84">
+          <span class="hits">54</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.destroy self.job_name</code>
         </li>
@@ -1605,20 +1605,20 @@
           <code class="ruby">  def get_config(key)</code>
         </li>
       
-        <li class="covered" data-hits="99" data-linenumber="90">
-          <span class="hits">99</span>
+        <li class="covered" data-hits="101" data-linenumber="90">
+          <span class="hits">101</span>
           
           <code class="ruby">    raise &quot;Application &#39;#{self.application}&#39; not found&quot; unless WATCHBOT_CONFIG.has_key?(self.application)</code>
         </li>
       
-        <li class="covered" data-hits="99" data-linenumber="91">
-          <span class="hits">99</span>
+        <li class="covered" data-hits="101" data-linenumber="91">
+          <span class="hits">101</span>
           
           <code class="ruby">    raise &quot;Configuration key &#39;#{key}&#39; not found&quot; unless WATCHBOT_CONFIG[self.application].has_key?(key)</code>
         </li>
       
-        <li class="covered" data-hits="99" data-linenumber="92">
-          <span class="hits">99</span>
+        <li class="covered" data-hits="101" data-linenumber="92">
+          <span class="hits">101</span>
           
           <code class="ruby">    WATCHBOT_CONFIG[self.application][key]</code>
         </li>
@@ -1644,8 +1644,8 @@
     <h3>lib/link_checkers.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>102</b> relevant lines. 
-      <span class="green"><b>102</b> lines covered</span> and
+      <b>112</b> relevant lines. 
+      <span class="green"><b>112</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1683,8 +1683,8 @@
           <code class="ruby">  def check_facebook_numbers</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="6">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="6">
+          <span class="hits">9</span>
           
           <code class="ruby">    get_shares_and_likes(:get_shares_and_likes_from_facebook)</code>
         </li>
@@ -2103,38 +2103,38 @@
           <code class="ruby">  def get_shares_and_likes(method)</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="76">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="37" data-linenumber="76">
+          <span class="hits">37</span>
           
           <code class="ruby">    likes = self.data[&#39;likes&#39;] || 0</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="77">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="37" data-linenumber="77">
+          <span class="hits">37</span>
           
           <code class="ruby">    shares = self.data[&#39;shares&#39;] || 0</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="78">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="37" data-linenumber="78">
+          <span class="hits">37</span>
           
           <code class="ruby">    begin</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="79">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="37" data-linenumber="79">
+          <span class="hits">37</span>
           
           <code class="ruby">      numbers = send(method)</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="80">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="29" data-linenumber="80">
+          <span class="hits">29</span>
           
           <code class="ruby">      likes = numbers[&#39;likes&#39;]</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="81">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="29" data-linenumber="81">
+          <span class="hits">29</span>
           
           <code class="ruby">      shares = numbers[&#39;shares&#39;]</code>
         </li>
@@ -2163,8 +2163,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="86">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="29" data-linenumber="86">
+          <span class="hits">29</span>
           
           <code class="ruby">    if likes == self.data[&#39;likes&#39;] &amp;&amp; shares = self.data[&#39;shares&#39;]</code>
         </li>
@@ -2181,14 +2181,14 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="89">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="89">
+          <span class="hits">23</span>
           
           <code class="ruby">    self.data = { &#39;likes&#39; =&gt; likes, &#39;shares&#39; =&gt; shares }</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="90">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="90">
+          <span class="hits">23</span>
           
           <code class="ruby">    self.data</code>
         </li>
@@ -2451,187 +2451,199 @@
           <code class="ruby">  def get_shares_and_likes_from_facebook</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="134">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="134">
+          <span class="hits">7</span>
           
           <code class="ruby">    graph = Koala::Facebook::API.new(get_config(&#39;settings&#39;)[&#39;facebook_auth_token&#39;])</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="135">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="135">
+          <span class="hits">7</span>
           
           <code class="ruby">    object = graph.get_object(self.url.gsub(/^https?:\/\/(www\.)?facebook\.com\/([0-9]+)\/posts\/([0-9]+).*/, &#39;\2_\3&#39;), fields: &#39;likes.summary(true),shares.summary(true)&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="136">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="136">
+          <span class="hits">7</span>
           
-          <code class="ruby">    { &#39;likes&#39; =&gt; object[&#39;likes&#39;][&#39;summary&#39;][&#39;total_count&#39;], &#39;shares&#39; =&gt; object[&#39;shares&#39;][&#39;count&#39;] }</code>
+          <code class="ruby">    likes = (object.has_key?(&#39;likes&#39;) &amp;&amp; object[&#39;likes&#39;].has_key?(&#39;summary&#39;)) ? object[&#39;likes&#39;][&#39;summary&#39;][&#39;total_count&#39;].to_i : 0</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="137">
+        <li class="covered" data-hits="4" data-linenumber="137">
+          <span class="hits">4</span>
           
+          <code class="ruby">    shares = (object.has_key?(&#39;shares&#39;)) ? object[&#39;shares&#39;][&#39;count&#39;].to_i : 0</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="138">
+          <span class="hits">4</span>
+          
+          <code class="ruby">    { &#39;likes&#39; =&gt; likes, &#39;shares&#39; =&gt; shares }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="139">
+          <span class="hits">1</span>
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="138">
-          
+        <li class="covered" data-hits="3" data-linenumber="140">
+          <span class="hits">3</span>
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="139">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="141">
+          <span class="hits">4</span>
           
           <code class="ruby">  def get_shares_and_likes_from_twitter_api</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="140">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    id = self.url.gsub(/^https?:\/\/(www\.)?twitter\.com\/statuses\//, &#39;&#39;)</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="141">
-          <span class="hits">6</span>
-          
-          <code class="ruby">    tweet = connect_to_twitter.status(id)</code>
         </li>
       
         <li class="covered" data-hits="6" data-linenumber="142">
           <span class="hits">6</span>
           
+          <code class="ruby">    id = self.url.gsub(/^https?:\/\/(www\.)?twitter\.com\/statuses\//, &#39;&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="143">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    tweet = connect_to_twitter.status(id)</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="144">
+          <span class="hits">3</span>
+          
           <code class="ruby">    { &#39;likes&#39; =&gt; tweet.favorite_count, &#39;shares&#39; =&gt; tweet.retweet_count }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="143">
-          
+        <li class="covered" data-hits="1" data-linenumber="145">
+          <span class="hits">1</span>
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="144">
-          
+        <li class="covered" data-hits="9" data-linenumber="146">
+          <span class="hits">9</span>
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="145">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="9" data-linenumber="147">
+          <span class="hits">9</span>
           
           <code class="ruby">  def get_shares_and_likes_from_twitter_html</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="146">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="9" data-linenumber="148">
+          <span class="hits">9</span>
           
           <code class="ruby">    data = parse_html({ &#39;likes&#39; =&gt; &#39;.js-stat-favorites strong&#39;, &#39;shares&#39; =&gt; &#39;.js-stat-retweets strong&#39; })</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="147">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="8" data-linenumber="149">
+          <span class="hits">8</span>
           
           <code class="ruby">    { &#39;likes&#39; =&gt; data[&#39;likes&#39;].to_i, &#39;shares&#39; =&gt; data[&#39;shares&#39;].to_i }</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="148">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="149">
-          
-          
-          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="150">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="151">
+          <span class="hits">1</span>
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="152">
+          <span class="hits">9</span>
+          
           <code class="ruby">  # grok: key =&gt; CSS selector</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="151">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="10" data-linenumber="153">
+          <span class="hits">10</span>
           
           <code class="ruby">  def parse_html(groks = {})</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="152">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="17" data-linenumber="154">
+          <span class="hits">17</span>
           
           <code class="ruby">    html = &#39;&#39;</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="153">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="9" data-linenumber="155">
+          <span class="hits">9</span>
           
           <code class="ruby">    open(self.url) do |f|</code>
-        </li>
-      
-        <li class="covered" data-hits="16" data-linenumber="154">
-          <span class="hits">16</span>
-          
-          <code class="ruby">      html = f.read</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="155">
-          
-          
-          <code class="ruby">    end</code>
         </li>
       
         <li class="covered" data-hits="16" data-linenumber="156">
           <span class="hits">16</span>
           
-          <code class="ruby">    doc = Nokogiri::HTML(html)</code>
+          <code class="ruby">      html = f.read</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="157">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="8" data-linenumber="157">
+          <span class="hits">8</span>
           
-          <code class="ruby">    resp = {}</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="covered" data-hits="16" data-linenumber="158">
           <span class="hits">16</span>
           
+          <code class="ruby">    doc = Nokogiri::HTML(html)</code>
+        </li>
+      
+        <li class="covered" data-hits="24" data-linenumber="159">
+          <span class="hits">24</span>
+          
+          <code class="ruby">    resp = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="8" data-linenumber="160">
+          <span class="hits">8</span>
+          
           <code class="ruby">    groks.each do |key, css|</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="159">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="24" data-linenumber="161">
+          <span class="hits">24</span>
           
           <code class="ruby">      resp[key] = doc.css(css).inner_html</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="160">
-          
+        <li class="covered" data-hits="8" data-linenumber="162">
+          <span class="hits">8</span>
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="161">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="8" data-linenumber="163">
+          <span class="hits">8</span>
           
           <code class="ruby">    doc = nil</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="162">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="8" data-linenumber="164">
+          <span class="hits">8</span>
           
           <code class="ruby">    resp</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="163">
+        <li class="never" data-hits="" data-linenumber="165">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="164">
+        <li class="never" data-hits="" data-linenumber="166">
           
           
           <code class="ruby">end</code>
