@@ -4,17 +4,21 @@ class WatchJob
   include Sidekiq::Worker
 
   def perform(*args)
-    link = Link.where(id: args.first).last
+    link = self.get_link(args.first)
     unless link.nil?
       link.check
       cron = link.calculate_cron
       if cron.nil?
         link.stop_watching
-      elsif !link.job.nil? && cron != link.job.cron
+      elsif !link.job.nil? && (cron != link.job.cron || link.prioritized)
         link.restart_watching
       end
     end
     self.after
+  end
+
+  def get_link(id)
+    Link.where(id: id).last
   end
 
   def after

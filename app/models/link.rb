@@ -10,6 +10,7 @@ class Link
   field :status, type: Integer
   field :data, type: Hash, default: {}
   field :application, type: String
+  field :priority, type: Integer
 
   validates_presence_of :url
   validates :url, uniqueness: { scope: :application, allow_blank: false }
@@ -19,6 +20,8 @@ class Link
 
   after_create :start_watching
   after_destroy :stop_watching
+
+  attr_accessor :prioritized
 
   def calculate_cron
     cron = nil
@@ -72,7 +75,7 @@ class Link
   end
 
   def start_watching
-    Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: 'WatchJob', args: [self.id.to_s])
+    Sidekiq::Cron::Job.create(name: self.job_name, cron: self.calculate_cron, klass: 'WatchJob', args: [self.id.to_s], queue: self.get_queue)
   end
 
   def restart_watching
@@ -82,6 +85,25 @@ class Link
 
   def stop_watching
     Sidekiq::Cron::Job.destroy self.job_name
+  end
+
+  def prioritized?
+    (self.priority.to_s.size > self.priority_was.to_i.to_s.size && self.priority_was < 100) ||
+    (self.priority > 0 && self.priority_was.to_i == 0)
+  end
+
+  def get_queue
+    # FIXME: Improve this
+    priority = self.priority.to_i
+    if priority < 1
+      'lowest'
+    elsif priority < 10
+      'low'
+    elsif priority < 100
+      'average'
+    else
+      'high'
+    end
   end
   
   private

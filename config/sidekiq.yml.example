@@ -3,3 +3,8 @@
 :redis_host: 'localhost'
 :redis_port: 6379
 :redis_database: 3
+:queues:
+  - [high, 7]
+  - [average, 5]
+  - [low, 3]
+  - [lowest, 1]

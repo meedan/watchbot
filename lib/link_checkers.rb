@@ -80,8 +80,12 @@ module LinkCheckers
       likes = numbers['likes']
       shares = numbers['shares']
     rescue
-      return false
+      # Do nothing
     end
+
+    # FIXME: Acceleration instead of absolute values?
+    self.priority = likes + shares
+    self.prioritized = self.prioritized?
 
     if likes == self.data['likes'] && shares = self.data['shares']
       return false
