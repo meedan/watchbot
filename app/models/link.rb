@@ -88,7 +88,7 @@ class Link
   end
 
   def prioritized?
-    current_prioriry, previous_priority = self.priority.to_i, self.priority_was.to_i
+    current_priority, previous_priority = self.priority.to_i, self.priority_was.to_i
     (current_priority.to_s.size > previous_priority.to_s.size && previous_priority < 100) ||
     (current_priority > 0 && previous_priority == 0)
   end
