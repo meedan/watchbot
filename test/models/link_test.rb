@@ -524,6 +524,60 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal resp, link.data
   end
 
+  test "should be prioritized if range changed" do
+    l = create_link priority: 10
+    l.priority = 100
+    assert l.prioritized?
+  end
+
+  test "should be prioritized after first increase" do
+    l = create_link priority: nil
+    l.priority = 1
+    assert l.prioritized?
+  end
+
+  test "should not be prioritized if range is last" do
+    l = create_link priority: 100
+    l.priority = 1000
+    assert !l.prioritized?
+  end
+
+  test "should not be prioritized if range did not change" do
+    l = create_link priority: 50
+    l.priority = 60
+    assert !l.prioritized?
+  end
+
+  test "should to go lowest queue" do
+    l = create_link priority: nil
+    assert_equal 'lowest', l.get_queue
+  end
+
+  test "should to go low queue" do
+    l = create_link priority: 5
+    assert_equal 'low', l.get_queue
+  end
+
+  test "should to go average queue" do
+    l = create_link priority: 90
+    assert_equal 'average', l.get_queue
+  end
+
+  test "should to go high queue" do
+    l = create_link priority: 105
+    assert_equal 'high', l.get_queue
+  end
+
+  test "should move job to another queue" do
+    link = create_link url: 'https://twitter.com/statuses/349542454690721793'
+    job = link.job
+    assert_equal 'lowest', job.instance_variable_get(:@queue)
+    job.enque!
+    WatchJob.drain
+    assert_equal 157, link.reload.priority
+    assert_equal 'high', link.reload.job.instance_variable_get(:@queue)
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end

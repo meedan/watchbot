@@ -80,7 +80,7 @@ module LinkCheckers
       likes = numbers['likes']
       shares = numbers['shares']
     rescue
-      # Do nothing
+      return false
     end
 
     # FIXME: Acceleration instead of absolute values?
