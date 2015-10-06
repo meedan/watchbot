@@ -108,14 +108,16 @@ class Link
   end
 
   def self.jobs_per_queue
-    counts = {}
-    Sidekiq::Cron::Job.all.collect do |j|
-      queue = j.instance_variable_get(:@queue).to_s
-      counts[queue] ||= 0
-      counts[queue] += 1
+    Rails.cache.fetch(Time.now.strftime("%Y%d%m%H")) do
+      counts = {}
+      Sidekiq::Cron::Job.all.collect do |j|
+        queue = j.instance_variable_get(:@queue).to_s
+        counts[queue] ||= 0
+        counts[queue] += 1
+      end
+      counts.delete('default')
+      counts
     end
-    counts.delete('default')
-    counts
   end
   
   private

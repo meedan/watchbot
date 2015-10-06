@@ -583,6 +583,15 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal({ 'lowest' => 1 }, Link.jobs_per_queue)
   end
 
+  test "should cache number of jobs per queue" do
+    link = create_link url: 'https://twitter.com/statuses/349542454690721793'
+    assert_equal({ 'lowest' => 1 }, Link.jobs_per_queue)
+    link = create_link url: 'https://twitter.com/rubyonrails/status/479095701939306496'
+    assert_equal({ 'lowest' => 1 }, Link.jobs_per_queue)
+    Rails.cache.clear
+    assert_equal({ 'lowest' => 2 }, Link.jobs_per_queue)
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end
