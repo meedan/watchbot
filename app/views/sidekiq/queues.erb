@@ -1,0 +1,18 @@
+<h3><%= t('Queues') %></h3>
+
+<div class="table_container">
+  <table class="queues table table-hover table-bordered table-striped table-white">
+    <thead>
+      <th><%= t('Queue') %></th>
+      <th><%= t('Size') %></th>
+    </thead>
+    <% Link.jobs_per_queue.each do |queue, value| %>
+      <tr>
+        <td>
+          <a href="<%= root_path %>queues/<%= queue %>"><%= queue %></a>
+        </td>
+        <td><%= number_with_delimiter(value) %> </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

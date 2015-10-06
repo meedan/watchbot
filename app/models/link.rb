@@ -106,6 +106,17 @@ class Link
       'high'
     end
   end
+
+  def self.jobs_per_queue
+    counts = {}
+    Sidekiq::Cron::Job.all.collect do |j|
+      queue = j.instance_variable_get(:@queue).to_s
+      counts[queue] ||= 0
+      counts[queue] += 1
+    end
+    counts.delete('default')
+    counts
+  end
   
   private
 

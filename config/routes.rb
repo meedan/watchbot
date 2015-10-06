@@ -3,9 +3,11 @@ Watchbot::Application.routes.draw do
   delete "/links/:url" => "links#destroy", constraints: { url: /.*/ }
 
   require 'sidekiq/web'
-  require 'sidekiq/cron/web'
-  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-    username == SIDEKIQ_CONFIG[:web_user] && password == SIDEKIQ_CONFIG[:web_password]
+  Sidekiq::Web.set 'views', File.join(Rails.root, 'app', 'views', 'sidekiq')
+  if !SIDEKIQ_CONFIG[:web_user].nil? && !SIDEKIQ_CONFIG[:web_password].nil?
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      username == SIDEKIQ_CONFIG[:web_user] && password == SIDEKIQ_CONFIG[:web_password]
+    end
   end
   mount Sidekiq::Web, at: '/sidekiq'
 end
