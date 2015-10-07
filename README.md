@@ -127,7 +127,7 @@ settings:
 * Create the applications on `config/applications/<environment>` (check examples under `config/applications/example`)
 * Install the gems: `bundle install`
 * Start the server
-* Start Sidekiq: `bundle exec sidekiq -d`
+* Start Sidekiq: `bundle exec sidekiq -d` (you can monitor Sidekiq by going to http://watchbot-server/sidekiq)
 
 ### Administrative tasks
 
@@ -139,3 +139,7 @@ There are some rake tasks to perform administrative actions. For example:
 ### Automated tests
 
 Run the test suite and coverage by calling `rake test:coverage`.
+
+### Documentation
+
+Provided by [Swagger](http://swagger.io). You can access it by going to http://watchbot-server/api and you can update it by running `rake swagger:docs`.

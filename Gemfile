@@ -18,3 +18,4 @@ gem 'sidekiq-cron'
 gem 'responders', '~> 2.0'
 gem 'multi_json'
 gem 'sinatra', require: nil
+gem 'swagger-docs'

@@ -17,6 +17,7 @@ class ActiveSupport::TestCase
     WebMock.stub_request(:post, 'http://localhost:4567/payload')
     Sidekiq::Worker.clear_all
     Sidekiq::Cron::Job.destroy_all!
+    Rails.cache.clear
   end
 
   def create_link(options = {})

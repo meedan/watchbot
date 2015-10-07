@@ -1,0 +1,97 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "/",
+  "resourcePath": "links",
+  "apis": [
+    {
+      "path": "links",
+      "operations": [
+        {
+          "summary": "Create a new link to be watched",
+          "notes": "This method can be called from clients in order to create links in Watchbot database, that will be checked periodically. Links need to be unique inside the same application.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "url",
+              "type": "string",
+              "description": "URL to be watched",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Link created successfully"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Parameters missing (URL was not provided)"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Link exists inside the application related to the API key"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Access denied"
+            }
+          ],
+          "method": "post",
+          "nickname": "Links#create"
+        }
+      ]
+    },
+    {
+      "path": "links/{url}",
+      "operations": [
+        {
+          "summary": "Remove a link from Watchbot",
+          "notes": "Clients can call this method in order to remove links from Watchbot database",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "url",
+              "type": "string",
+              "description": "URL to be removed",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Link was removed successfully"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Parameters missing (URL was not provided)"
+            },
+            {
+              "code": 400,
+              "responseModel": null,
+              "message": "Unknown error happened when trying to remove link"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Access denied"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Link does not exist inside the application related to the API key"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Links#destroy"
+        }
+      ]
+    }
+  ]
+}

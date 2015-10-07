@@ -31,6 +31,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_not_found
-    render_error 'Id not found', 'ID_NOT_FOUND', 404
+    render_error 'URL not found', 'ID_NOT_FOUND', 404
   end
 end

@@ -1,6 +1,8 @@
 class LinksController < ApplicationController
   respond_to :json
 
+  include LinksDoc
+
   before_filter :restrict_access
 
   def create
