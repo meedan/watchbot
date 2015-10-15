@@ -3,7 +3,6 @@
 [![Code Climate](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/gpa.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
 [![Test Coverage](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/badges/e3ad415924b42587b54a/coverage.svg)](https://codeclimate.com/repos/5501fd41e30ba0588f0006d4/feed)
 
-
 ### Introduction
 
 Subsystem that continuously monitors web links to verify certain conditions and states.
