@@ -592,6 +592,13 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal({ 'lowest' => 2 }, Link.jobs_per_queue)
   end
 
+  test "should stop watching Google Spreadsheet link if spreadsheet was removed" do
+    link = create_link url: 'https://docs.google.com/a/meedan.net/spreadsheets/d/1qpLfypUaoQalem6i3SHIiPqHOYGCWf2r7GFbvkIZtvk/edit?usp=docslist_api#removed'
+    assert_nothing_raised do
+      assert !link.check_google_spreadsheet_updated
+    end
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end

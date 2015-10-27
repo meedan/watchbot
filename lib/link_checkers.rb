@@ -34,6 +34,7 @@ module LinkCheckers
     w = Retryable.retryable tries: 5 do
       self.get_google_worksheet
     end
+    return false if w.nil?
     before = Digest::MD5.hexdigest(w.rows.join)
     return false if before === self.data['hash']
     sleep 30
