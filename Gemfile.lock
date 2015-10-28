@@ -200,12 +200,12 @@ GEM
       railties (>= 4.2.0, < 5)
     retriable (1.4.1)
     retryable (2.0.2)
-    rufus-scheduler (3.1.5)
+    rufus-scheduler (3.1.7)
     safe_yaml (1.0.4)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sidekiq (3.5.1)
+    sidekiq (3.5.2)
       celluloid (~> 0.17.2)
       connection_pool (~> 2.2, >= 2.2.0)
       json (~> 1.0)
@@ -214,6 +214,8 @@ GEM
     sidekiq-cron (0.3.1)
       rufus-scheduler (>= 2.0.24)
       sidekiq (>= 2.17.3)
+    sidekiq-uniq (0.2.0)
+      sidekiq (~> 3.5.1)
     signet (0.6.1)
       addressable (~> 2.3)
       extlib (~> 0.9)
@@ -284,6 +286,7 @@ DEPENDENCIES
   retryable
   sdoc
   sidekiq-cron
+  sidekiq-uniq (~> 0.2.0)
   sinatra
   swagger-docs
   twitter

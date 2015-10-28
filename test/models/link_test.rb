@@ -599,6 +599,24 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
+  test "should not enqueue already enqueued job" do
+    Sidekiq::Testing.disable! do
+      Sidekiq::Queue.new('lowest').clear
+      assert_equal 0, Sidekiq::Stats.new.enqueued
+      link = create_link url: 'https://twitter.com/statuses/349542454690721793'
+      link.reload.job.enque!
+      assert_equal 1, Sidekiq::Stats.new.enqueued
+      link.reload.job.enque!
+      assert_equal 1, Sidekiq::Stats.new.enqueued
+      link.reload.job.enque!
+      assert_equal 1, Sidekiq::Stats.new.enqueued
+      Sidekiq::Queue.new('lowest').clear
+      assert_equal 0, Sidekiq::Stats.new.enqueued
+      link.reload.job.enque!
+      assert_equal 1, Sidekiq::Stats.new.enqueued
+    end
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end
