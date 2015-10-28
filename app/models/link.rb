@@ -12,6 +12,10 @@ class Link
   field :application, type: String
   field :priority, type: Integer
 
+  before_validation(on: :create) do
+    self.url = self.url.to_s.gsub(/\s/, '')
+  end
+
   validates_presence_of :url
   validates :url, uniqueness: { scope: :application, allow_blank: false }
   validates_url :url, url: { no_local: true }

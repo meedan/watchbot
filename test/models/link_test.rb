@@ -617,6 +617,18 @@ class LinkTest < ActiveSupport::TestCase
     end
   end
 
+  test "should strip spaces when saving link" do
+    url = "http://test.test/\n#test"
+    l = create_link url: url
+    assert_equal 'http://test.test/#test', l.reload.url
+    url = "http://test.test/ #test2"
+    l = create_link url: url
+    assert_equal 'http://test.test/#test2', l.reload.url
+    url = "http://test.test/%20#test"
+    l = create_link url: url
+    assert_equal 'http://test.test/%20#test', l.reload.url
+  end
+
   def teardown
     Link.any_instance.unstub(:get_config)
   end
