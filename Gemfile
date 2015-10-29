@@ -19,4 +19,4 @@ gem 'responders', '~> 2.0'
 gem 'multi_json'
 gem 'sinatra', require: nil
 gem 'swagger-docs'
-gem 'sidekiq-uniq', '~> 0.2.0'
+gem 'sidekiq-uniq', '~> 0.7.0'

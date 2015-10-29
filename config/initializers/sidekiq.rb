@@ -5,3 +5,4 @@ end
 Sidekiq.configure_client do |config|
   config.redis = { url: "redis://#{SIDEKIQ_CONFIG[:redis_host]}:#{SIDEKIQ_CONFIG[:redis_port]}/#{SIDEKIQ_CONFIG[:redis_database]}", namespace: "sidekiq_watchbot_#{Rails.env}" }
 end
+Sidekiq::Uniq::Status.expiration = 48.hours.to_i
