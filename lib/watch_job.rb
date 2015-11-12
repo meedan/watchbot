@@ -25,7 +25,7 @@ class WatchJob
     pid = Process.pid
     cmd = "kill -USR1 #{pid} && kill -TERM #{pid} && kill -9 #{pid} && cd #{Rails.root} && RAILS_ENV=production bundle exec sidekiq -d"
     memory = Watchbot::Memory.value
-    limit = ENV['WATCHBOT_BG_JOB_MEMORY_LIMIT'] || 1000000000
+    limit = ENV['WATCHBOT_BG_JOB_MEMORY_LIMIT'] || 5000000
     if Rails.env === 'production' && memory >= limit.to_i
       puts "Reached #{memory} bytes of memory, restarting..."
       Kernel.system(cmd)

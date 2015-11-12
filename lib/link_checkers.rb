@@ -31,6 +31,10 @@ module LinkCheckers
 
   def check_google_spreadsheet_updated
     require 'digest/md5'
+
+    self.priority = 1000
+    self.prioritized = self.prioritized?
+
     w = Retryable.retryable tries: 5 do
       self.get_google_worksheet
     end
