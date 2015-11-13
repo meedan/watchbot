@@ -5,6 +5,7 @@ class Link
   include Mongoid::Document
   include Mongoid::Timestamps
   include LinkCheckers
+  include LinkValidations
   
   field :url, type: String
   field :status, type: Integer
@@ -15,12 +16,6 @@ class Link
   before_validation(on: :create) do
     self.url = self.url.to_s.gsub(/\s/, '')
   end
-
-  validates_presence_of :url
-  validates :url, uniqueness: { scope: :application, allow_blank: false }
-  validates_url :url, url: { no_local: true }
-  validates :status, numericality: { only_integer: true }, allow_nil: true
-  validates :application, presence: true, inclusion: { in: WATCHBOT_CONFIG.keys }
 
   after_create :start_watching
   after_destroy :stop_watching
