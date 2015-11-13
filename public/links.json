@@ -92,6 +92,59 @@
           "nickname": "Links#destroy"
         }
       ]
+    },
+    {
+      "path": "links/bulk",
+      "operations": [
+        {
+          "summary": "Create new links to be watched",
+          "notes": "This method can be called from clients in order to create links in Watchbot database, that will be checked periodically. Links need to be unique inside the same application. Multiple links can be sent using this method.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "url1",
+              "type": "string",
+              "description": "First URL to be watched",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "url2",
+              "type": "string",
+              "description": "Second URL to be watched",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "url3",
+              "type": "string",
+              "description": "Third URL to be watched",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "urln",
+              "type": "string",
+              "description": "N-th URL to be watched",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "X links created successfully and Y links failed"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Access denied"
+            }
+          ],
+          "method": "post",
+          "nickname": "Links#bulk_create"
+        }
+      ]
     }
   ]
 }

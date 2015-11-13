@@ -47,6 +47,8 @@ The client communicates with the Watchbot via a REST interface:
 
 * Add a link: `POST /links {"url":"link"}` which returns `{"type":"success"}` in case of success or `{"type":"error","data":{"message":"Error message","code":"error code"}}` otherwise.
 
+* Add many links: `POST /links/bulk {"url1":"link1","url2","link2","url3","link3",...,"urln":"linkn"}` which returns `{"type":"success"}` in case of success with a message that says how many items were created successfully and how many items failed.
+
 * Remove a link: `DELETE /links/:link` which returns `{"type":"success"}` in case of success or `{"type":"error","data":{"message":"Error message","code":"error code"}}` otherwise.
 
 Check the script at `scripts/test.sh` to see how these endpoints can be called.

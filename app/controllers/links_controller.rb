@@ -5,6 +5,21 @@ class LinksController < ApplicationController
 
   before_filter :restrict_access
 
+  def bulk_create
+    success = failures = 0
+    params.each do |param, url|
+      unless (param =~ /^url/).nil?
+        begin
+          Link.create! url: url, application: @key.application
+          success += 1
+        rescue
+          failures += 1
+        end
+      end
+    end
+    render_success "#{success} links created successfully and #{failures} links failed"
+  end
+
   def create
     begin
       render_parameters_missing and return if params[:url].blank?

@@ -1,6 +1,7 @@
 Watchbot::Application.routes.draw do
   resources :links, only: [:create]
   delete "/links/:url" => "links#destroy", constraints: { url: /.*/ }
+  post "/links/bulk" => "links#bulk_create"
 
   require 'sidekiq/web'
   Sidekiq::Web.set 'views', File.join(Rails.root, 'app', 'views', 'sidekiq')

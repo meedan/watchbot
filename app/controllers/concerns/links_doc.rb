@@ -15,6 +15,17 @@ module LinksDoc
       response 401, 'Access denied'
     end
 
+    swagger_api :bulk_create do
+      summary 'Create new links to be watched'
+      notes 'This method can be called from clients in order to create links in Watchbot database, that will be checked periodically. Links need to be unique inside the same application. Multiple links can be sent using this method.'
+      param :query, :url1, :string, :required, 'First URL to be watched'
+      param :query, :url2, :string, :required, 'Second URL to be watched'
+      param :query, :url3, :string, :required, 'Third URL to be watched'
+      param :query, :urln, :string, :required, 'N-th URL to be watched'
+      response :ok, 'X links created successfully and Y links failed'
+      response 401, 'Access denied'
+    end
+
     swagger_api :destroy do
       summary 'Remove a link from Watchbot'
       notes 'Clients can call this method in order to remove links from Watchbot database'

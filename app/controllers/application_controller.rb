@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
 
   def render_success(message = '')
     json = { type: 'success' }
-    # unless message.empty?
-    #   json[:data] = {
-    #     message: message,
-    #     code: WatchbotConstants::ErrorCodes::WARNING
-    #   }
-    # end
+    unless message.empty?
+      json[:data] = {
+        message: message,
+        code: WatchbotConstants::ErrorCodes::WARNING
+      }
+    end
     render json: json, status: 200
   end
 

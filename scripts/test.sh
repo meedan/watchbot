@@ -7,7 +7,7 @@ then
   HOST='http://localhost:3000'
 fi
 
-KEY=$(bundle exec rake watchbot:api_keys:create | sed 's/.*token \([^ ]\+\) .*/\1/g')
+KEY=$(bundle exec rake watchbot:api_keys:create application=bridge-api | sed 's/.*token \([^ ]\+\) .*/\1/g' | tail -1)
 
 function urlencode {
   local length="${#1}"
@@ -39,5 +39,6 @@ function call {
 }
 
 call POST links '{"url":"http://meedan.com"}'
+call POST links/bulk '{"url1":"http://meedan.com","url2":"http://meedan.com/bridge"}'
 url=$(urlencode http://meedan.com)
 call DELETE "links/$url"

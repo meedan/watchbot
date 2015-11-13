@@ -458,7 +458,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should restart background job if memory is exhausted and environment is production" do
-    Watchbot::Memory.stubs(:value).returns(1000000001)
+    Watchbot::Memory.stubs(:value).returns(5000001)
     Rails.stubs(:env).returns('production')
     Kernel.expects(:system).returns(true).once
     
@@ -472,7 +472,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should not restart background job if memory is not exhausted" do
-    Watchbot::Memory.stubs(:value).returns(999999999)
+    Watchbot::Memory.stubs(:value).returns(4999999)
     Rails.stubs(:env).returns('production')
     Kernel.expects(:system).never
     
@@ -486,7 +486,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should not restart background job if environment is not production" do
-    Watchbot::Memory.stubs(:value).returns(1000000001)
+    Watchbot::Memory.stubs(:value).returns(5000001)
     Kernel.expects(:system).never
     
     l = create_link url: 'https://twitter.com/statuses/613227868726804481'
