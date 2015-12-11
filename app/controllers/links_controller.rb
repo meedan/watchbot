@@ -6,18 +6,21 @@ class LinksController < ApplicationController
   before_filter :restrict_access
 
   def bulk_create
-    success = failures = 0
+    links = []
+    
     params.each do |param, url|
       unless (param =~ /^url/).nil?
-        begin
-          Link.create! url: url, application: @key.application
-          success += 1
-        rescue
-          failures += 1
-        end
+        links << Link.new(url: url, application: @key.application).as_document
       end
     end
-    render_success "#{success} links created successfully and #{failures} links failed"
+    
+    begin
+      Link.collection.insert_many(links)
+    rescue
+      # Not all links were inserted (e.g., there was a duplicated one or something)
+    end
+    
+    render_success
   end
 
   def create

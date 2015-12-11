@@ -13,6 +13,8 @@ class Link
   field :application, type: String
   field :priority, type: Integer
 
+  index({ url: 1 }, { unique: true })
+
   before_validation(on: :create) do
     self.url = self.url.to_s.gsub(/\s/, '')
   end

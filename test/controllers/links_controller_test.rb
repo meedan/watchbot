@@ -71,10 +71,11 @@ class LinksControllerTest < ActionController::TestCase
 
   test "should bulk create links" do
     authorize
+    create_link url: 'http://test.com/dup'
     assert_difference 'Link.count', 2 do
-      post :bulk_create, url1: 'http://test.com/1', url2: 'http://test.com/2', foo: 'http://test.com/3', url3: 'bar'
+      post :bulk_create, url1: 'http://test.com/1', url2: 'http://test.com/2', foo: 'http://test.com/3', url3: 'http://test.com/dup'
     end
-    assert_equal '2 links created successfully and 1 links failed', JSON.parse(response.body)['data']['message']
+    assert_equal 3, Link.count
     assert_response :success
   end
 
