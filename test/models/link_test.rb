@@ -150,7 +150,7 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that URL is online" do
     link = create_link url: 'http://www.google.com'
     assert !link.check404
-    assert_equal 302, link.status
+    assert_equal 200, link.status
   end
 
   test "should check that HTTPS URL is online" do
@@ -351,6 +351,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "should get number of likes and retweets from Twitter link from API" do
+    sleep 1
     link = create_link url: 'https://twitter.com/statuses/638402604188303360'
     resp = link.check_twitter_numbers_from_api
     assert_equal 3, resp['shares']
