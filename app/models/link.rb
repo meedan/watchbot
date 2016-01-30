@@ -6,12 +6,7 @@ class Link
   include Mongoid::Timestamps
   include LinkCheckers
   include LinkValidations
-  
-  field :url, type: String
-  field :status, type: Integer
-  field :data, type: Hash, default: {}
-  field :application, type: String
-  field :priority, type: Integer
+  include LinkFields
 
   index({ url: 1 }, { unique: true })
 
