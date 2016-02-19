@@ -575,7 +575,7 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'lowest', job.instance_variable_get(:@queue)
     job.enque!
     WatchJob.drain
-    assert_equal 157, link.reload.priority
+    assert_equal 156, link.reload.priority
     assert_equal 'high', link.reload.job.instance_variable_get(:@queue)
   end
 
@@ -630,6 +630,12 @@ class LinkTest < ActiveSupport::TestCase
     url = "http://test.test/%20#test"
     l = create_link url: url
     assert_equal 'http://test.test/%20#test', l.reload.url
+  end
+
+  test "should create link with timestamps" do
+    l = create_link
+    assert_not_nil l.created_at
+    assert_not_nil l.updated_at
   end
 
   def teardown
