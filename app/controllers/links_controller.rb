@@ -6,17 +6,14 @@ class LinksController < ApplicationController
   before_filter :restrict_access
 
   def bulk_create
-    links = []
+    @links = []
+    @docs = []
     
-    params.each do |param, url|
-      unless (param =~ /^url/).nil?
-        links << Link.new(url: url, application: @key.application).as_document
-      end
-    end
+    parse_links
     
     begin
-      Link.collection.insert_many(links)
-      links.map(&:start_watching)
+      Link.collection.insert_many(@docs)
+      @links.map(&:start_watching)
     rescue => e
       # Not all links were inserted (e.g., there was a duplicated one or something)
       Rails.logger.warn "Could not insert all links: #{e.message}"
@@ -56,6 +53,16 @@ class LinksController < ApplicationController
     authenticate_or_request_with_http_token do |token, options|
       @key = ApiKey.where(access_token: token, expire_at: { :$gte => Time.now }).last
       !@key.nil?
+    end
+  end
+
+  def parse_links
+    params.each do |param, url|
+      unless (param =~ /^url/).nil?
+        link = Link.new(url: url, application: @key.application)
+        @links << link
+        @docs << link.as_document
+      end
     end
   end
 end

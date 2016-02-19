@@ -10,6 +10,10 @@ class Link
 
   index({ url: 1 }, { unique: true })
 
+  after_initialize do
+    (self.created_at = self.updated_at = Time.now) if self.created_at.blank?
+  end
+
   before_validation(on: :create) do
     self.url = self.url.to_s.gsub(/\s/, '')
   end
@@ -75,7 +79,6 @@ class Link
   end
 
   def restart_watching
-    (self.created_at = self.updated_at = Time.now) if self.created_at.blank?
     self.stop_watching
     self.start_watching
   end
