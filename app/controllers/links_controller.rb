@@ -16,8 +16,10 @@ class LinksController < ApplicationController
     
     begin
       Link.collection.insert_many(links)
-    rescue
+      links.map(&:start_watching)
+    rescue => e
       # Not all links were inserted (e.g., there was a duplicated one or something)
+      Rails.logger.warn "Could not insert all links: #{e.message}"
     end
     
     render_success
