@@ -7,19 +7,9 @@ class Link
   include LinkCheckers
   include LinkValidations
   include LinkFields
+  include LinkCallbacks
 
   index({ url: 1 }, { unique: true })
-
-  after_initialize do
-    (self.created_at = self.updated_at = Time.now) if self.created_at.blank?
-  end
-
-  before_validation(on: :create) do
-    self.url = self.url.to_s.gsub(/\s/, '')
-  end
-
-  after_create :start_watching
-  after_destroy :stop_watching
 
   attr_accessor :prioritized
 
