@@ -51,6 +51,8 @@ The client communicates with the Watchbot via a REST interface:
 
 * Remove a link: `DELETE /links/:link` which returns `{"type":"success"}` in case of success or `{"type":"error","data":{"message":"Error message","code":"error code"}}` otherwise.
 
+* Remove many links: `DELETE /links/bulk {"url1":"link1","url2","link2","url3","link3",...,"urln":"linkn"}` which returns `{"type":"success"}` in case of success
+
 Check the script at `scripts/test.sh` to see how these endpoints can be called.
 
 When a condition is verified, the client is notified through a webhook. An example simple client written in Sinatra can be found at `scripts/sinatra.rb`, which runs by default at `http://localhost:4567` and has a `/payload` API enpoint to receive the notifications from the Watchbot. It's necessary to setup a `secret_token` on both client and server in order to verify the communication.

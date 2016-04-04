@@ -47,6 +47,13 @@ class LinksController < ApplicationController
     end
   end
 
+  def bulk_destroy
+    params.each do |param, url|
+      Link.where(url: url).destroy unless (param =~ /^url/).nil?
+    end
+    render_success
+  end
+
   private
 
   def restrict_access

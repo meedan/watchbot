@@ -1,4 +1,6 @@
-WatchBot Endpoints - Fri Nov 13 00:59:03 UTC 2015
-     1	DELETE /links/:url
-     2	POST   /links
-     3	POST   /links/bulk
+WatchBot Endpoints - Mon Apr  4 23:10:46 UTC 2016
+     1	DELETE /links/bulk
+     2	DELETE /links/:url
+     3	POST   /links
+     4	POST   /links/bulk
+     5	sidekiq_web        /sidekiq              Sidekiq::Web

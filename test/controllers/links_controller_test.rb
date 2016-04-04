@@ -85,4 +85,31 @@ class LinksControllerTest < ActionController::TestCase
     end
     assert_response 401
   end
+
+  test "should bulk delete links" do
+    authorize
+    assert_difference 'Link.count', 3 do
+      create_link url: 'http://test.com/2'
+      create_link url: 'http://test.com/3'
+      create_link url: 'http://test.com/4'
+    end
+    assert_equal 3, Sidekiq::Cron::Job.count
+    assert_difference 'Link.count', -2 do
+      delete :bulk_destroy, url1: 'http://test.com/1', url2: 'http://test.com/2', foo: 'http://test.com/3', url3: 'bar', url4: 'http://test.com/4'
+    end
+    assert_equal 1, Sidekiq::Cron::Job.count
+    assert_response :success
+  end
+
+  test "should not bulk delete links" do
+    assert_difference 'Link.count', 3 do
+      create_link url: 'http://test.com/2'
+      create_link url: 'http://test.com/3'
+      create_link url: 'http://test.com/4'
+    end
+    assert_no_difference 'Link.count' do
+      delete :bulk_destroy, url1: 'http://test.com/1', url2: 'http://test.com/2', foo: 'http://test.com/3', url3: 'bar', url4: 'http://test.com/4'
+    end
+    assert_response 401
+  end
 end

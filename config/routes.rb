@@ -1,5 +1,6 @@
 Watchbot::Application.routes.draw do
   resources :links, only: [:create]
+  delete "/links/bulk" => "links#bulk_destroy"
   delete "/links/:url" => "links#destroy", constraints: { url: /.*/ }
   post "/links/bulk" => "links#bulk_create"
 

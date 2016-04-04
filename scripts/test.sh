@@ -39,6 +39,7 @@ function call {
 }
 
 call POST links '{"url":"http://meedan.com"}'
-call POST links/bulk '{"url1":"http://meedan.com","url2":"http://meedan.com/bridge"}'
 url=$(urlencode http://meedan.com)
 call DELETE "links/$url"
+call POST links/bulk '{"url1":"http://meedan.com","url2":"http://meedan.com/bridge"}'
+call DELETE links/bulk '{"url1":"http://meedan.com","url2":"http://meedan.com/bridge"}'
