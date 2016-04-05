@@ -143,6 +143,54 @@
           ],
           "method": "post",
           "nickname": "Links#bulk_create"
+        },
+        {
+          "summary": "Stop watching links",
+          "notes": "This method can be called from clients in order to delete links from Watchbot database. Multiple links can be deleted using this method.",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "url1",
+              "type": "string",
+              "description": "First URL to be deleted",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "url2",
+              "type": "string",
+              "description": "Second URL to be deleted",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "url3",
+              "type": "string",
+              "description": "Third URL to be deleted",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "urln",
+              "type": "string",
+              "description": "N-th URL to be deleted",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Links deleted"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Access denied"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Links#bulk_destroy"
         }
       ]
     }
