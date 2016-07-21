@@ -150,7 +150,7 @@ class LinkTest < ActiveSupport::TestCase
   test "should check that URL is online" do
     link = create_link url: 'http://www.google.com'
     assert !link.check404
-    assert_equal 200, link.status
+    assert_equal 302, link.status
   end
 
   test "should check that HTTPS URL is online" do
@@ -575,7 +575,7 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'lowest', job.instance_variable_get(:@queue)
     job.enque!
     WatchJob.drain
-    assert_equal 156, link.reload.priority
+    assert_equal 157, link.reload.priority
     assert_equal 'high', link.reload.job.instance_variable_get(:@queue)
   end
 
