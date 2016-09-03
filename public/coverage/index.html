@@ -97,7 +97,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>41.1</td>
+        <td>41.2</td>
       </tr>
       
       <tr>
@@ -282,7 +282,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>41.1</td>
+        <td>41.2</td>
       </tr>
       
       <tr>
@@ -1703,8 +1703,8 @@
           <code class="ruby">    after_initialize do</code>
         </li>
       
-        <li class="covered" data-hits="274" data-linenumber="6">
-          <span class="hits">274</span>
+        <li class="covered" data-hits="275" data-linenumber="6">
+          <span class="hits">275</span>
           
           <code class="ruby">      (self.created_at = self.updated_at = Time.now) if self.created_at.blank?</code>
         </li>
@@ -2309,8 +2309,8 @@
           <code class="ruby">  def job_name</code>
         </li>
       
-        <li class="covered" data-hits="215" data-linenumber="60">
-          <span class="hits">215</span>
+        <li class="covered" data-hits="216" data-linenumber="60">
+          <span class="hits">216</span>
           
           <code class="ruby">    &quot;link-#{self.id.to_s}-job&quot;</code>
         </li>
@@ -2411,8 +2411,8 @@
           <code class="ruby">  def stop_watching</code>
         </li>
       
-        <li class="covered" data-hits="79" data-linenumber="77">
-          <span class="hits">79</span>
+        <li class="covered" data-hits="80" data-linenumber="77">
+          <span class="hits">80</span>
           
           <code class="ruby">    Sidekiq::Cron::Job.destroy self.job_name</code>
         </li>
@@ -2825,8 +2825,8 @@
           <code class="ruby">      if code === 301 || code === 302</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="23">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="19" data-linenumber="23">
+          <span class="hits">19</span>
           
           <code class="ruby">        code = get_http_response_for(response.header[&#39;location&#39;]).code.to_i</code>
         </li>
@@ -3305,32 +3305,32 @@
           <code class="ruby">  def get_http_response_for(url)</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="103">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="30" data-linenumber="103">
+          <span class="hits">30</span>
           
           <code class="ruby">    uri = URI.parse(url).normalize</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="104">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="104">
+          <span class="hits">32</span>
           
           <code class="ruby">    agent = { &#39;User-Agent&#39; =&gt; &#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="105">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="105">
+          <span class="hits">32</span>
           
           <code class="ruby">    http = Net::HTTP.new(uri.host, uri.port)</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="106">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="106">
+          <span class="hits">32</span>
           
           <code class="ruby">    http.use_ssl = uri.scheme == &#39;https&#39;</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="107">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="29" data-linenumber="107">
+          <span class="hits">29</span>
           
           <code class="ruby">    http.get(uri.path, agent)</code>
         </li>

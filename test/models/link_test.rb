@@ -575,7 +575,7 @@ class LinkTest < ActiveSupport::TestCase
     assert_equal 'lowest', job.instance_variable_get(:@queue)
     job.enque!
     WatchJob.drain
-    assert_equal 157, link.reload.priority
+    assert_equal 159, link.reload.priority
     assert_equal 'high', link.reload.job.instance_variable_get(:@queue)
   end
 
